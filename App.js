@@ -2,6 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useTranslation } from "react-i18next";
+import "./IMLocalize";
+import { Text } from "react-native";
 
 import NextWasteCard from "./src/components/NextWasteCard/NextWasteCard";
 import WasteCard from "./src/components/WasteCard/WasteCard";
@@ -18,7 +21,7 @@ const screenOptions = ({ route }) => ({
 
 		if (route.name === "Waste") {
 			iconName = focused ? "ios-trash" : "ios-trash-outline";
-		} else if (route.name === "Awarie") {
+		} else if (route.name === "Failures") {
 			iconName = focused ? "ios-warning" : "ios-warning-outline";
 		}
 
@@ -33,12 +36,22 @@ const screenOptions = ({ route }) => ({
 });
 
 export default function App() {
+	const { t } = useTranslation();
+
 	return (
 		<NavigationContainer>
 			<StatusBar style="light" />
 			<Tab.Navigator screenOptions={screenOptions}>
-				<Tab.Screen name="Awarie" component={WasteCard} />
-				<Tab.Screen name="Waste" component={WasteScreen} />
+				<Tab.Screen
+					name="Failures"
+					component={WasteCard}
+					options={{ tabBarLabel: t("navigation:failures") }}
+				/>
+				<Tab.Screen
+					name="Waste"
+					component={WasteScreen}
+					options={{ tabBarLabel: t("navigation:waste") }}
+				/>
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
