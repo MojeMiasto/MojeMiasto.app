@@ -1,5 +1,5 @@
 import { View, Text, Image } from "react-native";
-import wastebin from "../../assets/wastebin.png";
+import wastebin from "../../assets/img/wastebin.png";
 import style from "./styles_NextWasteCard.js";
 
 export default function NextWasteCard({ wasteType, wasteDate }) {
