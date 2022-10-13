@@ -3,9 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 export default StyleSheet.create({
 	container: {
 		width: Dimensions.get("window").width - 32,
-		height: 122,
+		height: 334,
 		backgroundColor: "#1B4332",
-		padding: 11,
+		padding: 24,
 		borderRadius: 16,
 		flexDirection: "row",
 		shadowColor: "#000",
@@ -15,10 +15,10 @@ export default StyleSheet.create({
 	},
 	content: {
 		flex: 1,
-		paddingLeft: 16,
-		justifyContent: "space-around"
+		paddingLeft: 16
 	},
 	title: {
+		paddingTop: 8,
 		fontSize: 24,
 		fontWeight: "bold",
 		letterSpacing: 1,
