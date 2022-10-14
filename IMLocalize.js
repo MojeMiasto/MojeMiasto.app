@@ -4,11 +4,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Localization from "expo-localization";
 
 import pl from "./src/assets/translations/pl";
-import en from "./src/assets/translations/en";
+// import en from "./src/assets/translations/en";
 
 const LANGUAGES = {
-	pl,
-	en
+	pl
 };
 
 const LANGUAGE_DETECTOR = {

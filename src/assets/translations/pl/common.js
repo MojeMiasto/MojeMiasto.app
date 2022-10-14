@@ -1,4 +1,4 @@
 export default {
 	welcome: "Witaj",
-	languageSelector: "Wybierz język"
+	language_selector: "Wybierz język"
 };
