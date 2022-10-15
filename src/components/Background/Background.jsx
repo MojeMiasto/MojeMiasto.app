@@ -1,4 +1,4 @@
-import defaultStyles, { colors } from "../../../styles";
+import defaultStyles, { colors } from "../../styles";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function Background({ children }) {

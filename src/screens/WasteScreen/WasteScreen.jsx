@@ -1,7 +1,7 @@
 import { SafeAreaView, View } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import defaultStyles from "../../../styles.js";
+import defaultStyles from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
 import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";

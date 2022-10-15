@@ -3,8 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTranslation } from "react-i18next";
 
-import WasteCard from "./src/components/WasteCard/WasteCard";
-import WasteScreen from "./src/screens/WasteScreen/WasteScreen";
+import WasteCard from "./components/WasteCard/WasteCard";
+import WasteScreen from "./screens/WasteScreen/WasteScreen";
 
 import { screenOptions } from "./screenOptions";
 
