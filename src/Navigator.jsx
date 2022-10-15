@@ -7,6 +7,7 @@ import WasteCard from "./components/WasteCard/WasteCard";
 import WasteScreen from "./screens/WasteScreen/WasteScreen";
 
 import { screenOptions } from "./screenOptions";
+import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,7 @@ export default function Navigator() {
 		<NavigationContainer>
 			<StatusBar style="light" />
 			<Tab.Navigator screenOptions={screenOptions}>
+				<Tab.Screen name="Welcome" component={WelcomeScreen} />
 				<Tab.Screen
 					name="Waste"
 					component={WasteScreen}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import AnimatedSplash from "react-native-animated-splash-screen";
 
@@ -7,19 +7,34 @@ import { colors } from "./src/styles";
 import Navigator from "./src/Navigator";
 import useLoadAppData from "./src/useLoadAppData";
 
-SplashScreen.hideAsync();
-
 export default function App() {
 	const [isAppReady, loadAppData] = useLoadAppData();
+	const [isSplashReady, setSplashReady] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setSplashReady(true);
+		}, 3000);
+	}, [isAppReady]);
 
 	useEffect(() => {
 		loadAppData();
 	}, []);
-
+	if (!isAppReady)
+		return (
+			<AnimatedSplash
+				translucent={true}
+				isLoaded={false}
+				logoImage={require("./assets/logo.png")}
+				logoWidth={214}
+				logoHeight={164}
+				backgroundColor={colors.primaryLight}
+			></AnimatedSplash>
+		);
 	return (
 		<AnimatedSplash
 			translucent={true}
-			isLoaded={isAppReady}
+			isLoaded={isSplashReady}
 			logoImage={require("./assets/logo.png")}
 			logoWidth={214}
 			logoHeight={164}

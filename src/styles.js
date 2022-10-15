@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export const defaultBorderRadius = 16;
 export const defaultPadding = 16;
@@ -12,6 +12,7 @@ export const colors = {
 	text: "#d8f3dc",
 	textDark: "#b7e4c7"
 };
+export const screenWidth = Dimensions.get("window").width;
 
 export default StyleSheet.create({
 	wrapper: {
@@ -26,5 +27,11 @@ export default StyleSheet.create({
 		left: 0,
 		width: "100%",
 		height: "100%"
+	},
+	title: {
+		fontSize: 24,
+		fontWeight: "bold",
+		letterSpacing: 1,
+		color: colors.text
 	}
 });
