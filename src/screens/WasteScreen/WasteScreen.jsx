@@ -1,21 +1,16 @@
-import { LinearGradient } from "expo-linear-gradient";
-import { SafeAreaView, View, Text } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import defaultStyles, { colors } from "../../../styles.js";
+import defaultStyles from "../../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
 import WasteCard from "../../components/WasteCard/WasteCard.jsx";
+import Background from "../../components/Background/Background.jsx";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
 
 	return (
-		<>
-			<LinearGradient
-				colors={[colors.primaryLight, colors.primaryDark]}
-				start={{ x: 1, y: 0 }}
-				style={defaultStyles.background}
-			/>
+		<Background>
 			<SafeAreaView style={defaultStyles.wrapper}>
 				<View style={{ height: 100 }} />
 				<NextWasteCard
@@ -25,6 +20,6 @@ export default function WasteScreen() {
 				<View style={{ height: 100 }} />
 				<WasteCard />
 			</SafeAreaView>
-		</>
+		</Background>
 	);
 }
