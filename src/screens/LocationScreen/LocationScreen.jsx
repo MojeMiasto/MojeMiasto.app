@@ -2,15 +2,12 @@ import { Text, Image } from "react-native";
 import Background from "../../components/Background/Background";
 import { useTranslation } from "react-i18next";
 
-import { screenWidth } from "../../styles";
+import defaultStyles, { screenWidth } from "../../styles";
 
-import style from "./styles_WelcomeScreen";
-import WelcomeButton from "./WelcomeButton";
-
-export default function WelcomeScreen({ navigation }) {
+export default function LocationScreen({ navigation }) {
 	const { t } = useTranslation();
 	const onPressHandler = () => {
-		navigation.navigate("Location");
+		console.log("next");
 	};
 
 	return (
@@ -20,9 +17,9 @@ export default function WelcomeScreen({ navigation }) {
 				resizeMode="contain"
 				style={{ width: screenWidth, height: 350 }}
 			/>
-			<Text style={[style.title]}>{t("welcome:welcomeMsg")}</Text>
-			<Text style={[style.subtitle]}>{t("welcome:slogan")}</Text>
-			<WelcomeButton onPress={onPressHandler} />
+			<Text style={[defaultStyles.title1]}>{t("location:title")}</Text>
+			{/* <Text style={[style.subtitle]}>{t("welcome:slogan")}</Text> */}
+			{/* <WelcomeButton onPress={onPressHandler} /> */}
 		</Background>
 	);
 }

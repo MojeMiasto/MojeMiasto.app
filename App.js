@@ -10,6 +10,7 @@ import useLoadAppData from "./src/useLoadAppData";
 export default function App() {
 	const [isAppReady, loadAppData] = useLoadAppData();
 	const [isSplashReady, setSplashReady] = useState(false);
+	const isFirstLaunch = true;
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -40,7 +41,7 @@ export default function App() {
 			logoHeight={164}
 			backgroundColor={colors.primaryLight}
 		>
-			<Navigator />
+			<Navigator welcome={isFirstLaunch} />
 		</AnimatedSplash>
 	);
 }

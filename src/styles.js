@@ -33,5 +33,11 @@ export default StyleSheet.create({
 		fontWeight: "bold",
 		letterSpacing: 1,
 		color: colors.text
+	},
+	title1: {
+		fontFamily: "Poppins_400",
+		fontSize: 32,
+		letterSpacing: 1,
+		color: colors.text
 	}
 });

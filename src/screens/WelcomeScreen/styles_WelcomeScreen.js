@@ -15,7 +15,7 @@ export default StyleSheet.create({
 		marginTop: 32
 	},
 	button_wrapper: {
-		marginTop: 165,
+		marginTop: screenWidth * 0.3,
 		justifyContent: "space-around",
 		alignItems: "center",
 		flexDirection: "row",
