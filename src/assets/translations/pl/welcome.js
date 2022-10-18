@@ -1,5 +1,5 @@
 export default {
-	welcomeMsg: "Witaj w moje miasto!",
+	welcomeMsg: "Witaj w Moje Miasto!",
 	slogan: "Wszystkie Twoje śmieci w\n jednym miejscu!",
-	button: "Zaczynajmy!"
+	button: "Zaczynajmy!",
 };

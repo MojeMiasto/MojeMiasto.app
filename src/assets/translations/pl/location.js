@@ -1,3 +1,5 @@
 export default {
-	title: "Wybierz swoją lokalizację"
+	title: "Konfiguracja lokalizacji",
+	header: "Wybierz swoje miasto spośród dostępnych:",
+	forwards: "Dalej",
 };

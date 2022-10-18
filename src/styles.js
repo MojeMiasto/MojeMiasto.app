@@ -10,7 +10,7 @@ export const colors = {
 	accentDark: "#40916c",
 	accentLight: "#52b788",
 	text: "#d8f3dc",
-	textDark: "#b7e4c7"
+	textDark: "#b7e4c7",
 };
 export const screenWidth = Dimensions.get("window").width;
 
@@ -18,7 +18,8 @@ export default StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		alignItems: "center",
-		padding: defaultPadding
+		padding: defaultPadding,
+		margin: 0,
 		// backgroundColor: "#081C15"
 	},
 	background: {
@@ -26,18 +27,62 @@ export default StyleSheet.create({
 		top: 0,
 		left: 0,
 		width: "100%",
-		height: "100%"
+		height: "100%",
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: "bold",
 		letterSpacing: 1,
-		color: colors.text
+		color: colors.text,
 	},
 	title1: {
 		fontFamily: "Poppins_400",
-		fontSize: 32,
+		fontSize: 26,
 		letterSpacing: 1,
-		color: colors.text
-	}
+		color: colors.text,
+	},
+	locationContainer: {
+		width: Dimensions.get("window").width - 48,
+		height: 200,
+		backgroundColor: "#1B4332",
+		margin: 24,
+		padding: 16,
+		borderRadius: 16,
+		flexDirection: "column",
+		shadowColor: "#000",
+		shadowOffset: { height: 10, width: 0 },
+		shadowOpacity: 0.2,
+		shadowRadius: 10,
+		// overflow: "scroll",
+	},
+	header: {
+		lineHeight: 36,
+		fontSize: 24,
+		textAlignVertical: "top",
+		color: "#D8F3DC",
+	},
+	hr: {
+		width: 280,
+		height: 1,
+		backgroundColor: "#B7E4C7",
+		marginTop: 8,
+		marginBottom: 8,
+	},
+	townItem: {
+		fontFamily: "Poppins_300",
+		fontSize: 16,
+		lineHeight: 24,
+		letterSpacing: 1,
+		color: "#93c29a",
+	},
+	townItemFocused: {
+		fontFamily: "Poppins_300",
+		color: "#D8F3DC",
+		"&::after": {
+			content: `testtest`,
+			width: 50,
+			height: 50,
+			backgroundColor: "red",
+		},
+	},
 });

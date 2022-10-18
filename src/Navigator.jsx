@@ -11,6 +11,8 @@ import { screenOptions } from "./screenOptions";
 import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
 import LocationScreen from "./screens/LocationScreen/LocationScreen";
 
+import LocationStreetScreen from "./screens/LocationStreetScreen/LocationStreetScreen";
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,7 @@ export default function Navigator({ welcome }) {
 				<Stack.Navigator screenOptions={screenOptions}>
 					<Stack.Screen name="Welcome" component={WelcomeScreen} />
 					<Stack.Screen name="Location" component={LocationScreen} />
+					<Stack.Screen name="Location_street" component={LocationStreetScreen} />
 				</Stack.Navigator>
 			) : (
 				<Tab.Navigator screenOptions={screenOptions}>
