@@ -1,4 +1,4 @@
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Text, TouchableWithoutFeedback } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 
@@ -26,7 +26,7 @@ export default function LocatonScreen({ setSelected }) {
 
 	const handleSelectingTown = (el) => {
 		setSelectedTown(el);
-	};
+	}; 
 	return (
 		<View style={[defaultStyles.locationContainer]}>
 			<Text style={[defaultStyles.header]}>{t("location:header")}</Text>
@@ -34,9 +34,9 @@ export default function LocatonScreen({ setSelected }) {
 			<ScrollView>
 				{towns
 					? towns.map((el) => (
+						<TouchableWithoutFeedback onPress={() => handleSelectingTown(el)}>
 							<Text
 								key={el}
-								onPress={() => handleSelectingTown(el)}
 								style={[
 									defaultStyles.townItem,
 									selectedTown == el ? defaultStyles.townItemFocused : ""
@@ -44,6 +44,7 @@ export default function LocatonScreen({ setSelected }) {
 							>
 								{el}
 							</Text>
+						</TouchableWithoutFeedback>
 					  ))
 					: null}
 			</ScrollView>
