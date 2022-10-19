@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { colors } from "../../styles";
-import style from "./styles_LocationScreen";
+import style from "./styles_LocationStreetScreen";
 
-export default function LocationConfirmButton({ onPress }) {
+export default function LocationStreetConfirmButton({ onPress }) {
 	const { t } = useTranslation();
 
 	return (

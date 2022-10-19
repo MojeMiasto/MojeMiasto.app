@@ -1,14 +1,16 @@
 import { View, Text, Image, ScrollView } from "react-native";
 import Background from "../../components/Background/Background";
-import LocationContainer from "./LocationScreenContainer"
-import LocationConfirmButton from "./LocationScreenConfirmButton"
+import LocationContainer from "./LocationScreenContainer";
+import LocationConfirmButton from "./LocationScreenConfirmButton";
 import { useTranslation } from "react-i18next";
 import defaultStyles, { screenWidth } from "../../styles";
+import { useState, useEffect } from "react";
 
 export default function LocationScreen({ navigation }) {
+	const [selectedTown, setSelectedTown] = useState("");
 	const { t } = useTranslation();
 	const onPressHandler = () => {
-		navigation.navigate("Location_street");
+		navigation.navigate("Location_street", { selectedTown });
 	};
 
 	return (
@@ -19,12 +21,10 @@ export default function LocationScreen({ navigation }) {
 				style={{ width: screenWidth, height: 350 }}
 			/>
 			<Text style={[defaultStyles.title1]}>{t("location:title")}</Text>
-			
-			<LocationContainer />
 
-			<LocationConfirmButton onPress={onPressHandler} />
+			<LocationContainer setSelected={setSelectedTown} />
 
-
+			{selectedTown ? <LocationConfirmButton onPress={onPressHandler} /> : null}
 		</Background>
 	);
 }

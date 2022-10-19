@@ -1,41 +1,52 @@
-
 import { View, ScrollView, Text } from "react-native";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import defaultStyles, { screenWidth } from "../../styles";
 
-export default function LocatonScreen() {
+export default function LocatonScreen({ setSelected }) {
 	const { t } = useTranslation();
-	const [selectedTown, setselectedTown] = useState("")
+	const [selectedTown, setSelectedTown] = useState("");
+	const [towns, setTowns] = useState([]);
 
-    const towns_temp = [
-		{name: "Dąbrowa Górnicza"},
-		{name: "Małogoszcz"},
-		{name: "Myszków"},
-		{name: "Sosnowiec"},
-	]
+	useEffect(() => {
+		setSelected(selectedTown);
+	}, [selectedTown]);
 
+	useEffect(() => {
+		const onMountDataLoad = async () => {
+			const response = await fetch(
+				"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=cities"
+			);
+			const data = await response.json();
+			setTowns(data.returnList);
+		};
+		onMountDataLoad();
+	}, []);
 
-    const handleSelectingTown = (el) => {
-		setselectedTown(el.name)
-	}
+	const handleSelectingTown = (el) => {
+		setSelectedTown(el);
+	};
 	return (
 		<View style={[defaultStyles.locationContainer]}>
-            <Text style={[defaultStyles.header]}>{t("location:header")}</Text>
-            <View style={[defaultStyles.hr]}></View>
-            <ScrollView>
-                {
-                    towns_temp.map(el => 
-                        
-                        <Text key={el.name} onPress={() => handleSelectingTown(el)} style={[defaultStyles.townItem, selectedTown == el.name ? defaultStyles.townItemFocused : ""]}>{el.name}</Text> 
-                        
-                    )
-                }
-            </ScrollView>
-        </View>
+			<Text style={[defaultStyles.header]}>{t("location:header")}</Text>
+			<View style={[defaultStyles.hr]}></View>
+			<ScrollView>
+				{towns
+					? towns.map((el) => (
+							<Text
+								key={el}
+								onPress={() => handleSelectingTown(el)}
+								style={[
+									defaultStyles.townItem,
+									selectedTown == el ? defaultStyles.townItemFocused : ""
+								]}
+							>
+								{el}
+							</Text>
+					  ))
+					: null}
+			</ScrollView>
+		</View>
 	);
 }
-
-
-

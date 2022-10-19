@@ -5,7 +5,7 @@ export default StyleSheet.create({
 	title: {
 		fontFamily: "Poppins_400",
 		fontSize: 32,
-		color: colors.text,
+		color: colors.text
 	},
 	button_wrapper: {
 		justifyContent: "space-around",
@@ -15,10 +15,11 @@ export default StyleSheet.create({
 		height: 81,
 		padding: 22,
 		borderRadius: 16,
+		marginBottom: 50
 	},
 	button_title: {
 		fontFamily: "Poppins_400",
 		fontSize: 24,
-		color: colors.text,
-	},
+		color: colors.text
+	}
 });
