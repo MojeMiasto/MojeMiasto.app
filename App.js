@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import * as SplashScreen from "expo-splash-screen";
 import AnimatedSplash from "react-native-animated-splash-screen";
 
 import "./src/IMLocalize";
