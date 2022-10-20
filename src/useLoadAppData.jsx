@@ -31,9 +31,16 @@ export default function useLoadAppData() {
 	}, [isReady]);
 	useEffect(() => {
 		const a = async () => {
-			await AsyncStorage.getItem("alreadyLaunched").then((value) => {
+			await AsyncStorage.getItem("alreadyLaunched").then(async (value) => {
 				if (value == null || value == "false") {
-					AsyncStorage.setItem("alreadyLaunched", "true");
+					await AsyncStorage.setItem("alreadyLaunched", "true");
+
+					const wastedata = await fetch(
+						"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=waste"
+					);
+					const data = await wastedata.json();
+					await AsyncStorage.setItem("wasteTypes", JSON.stringify(data));
+
 					setIsFirstLaunch(true);
 					console.log("First launch");
 				} else {
@@ -43,7 +50,7 @@ export default function useLoadAppData() {
 			});
 		};
 		a();
-		// setIsFirstLaunch(true);
+		// setIsFirstLaunch(false);
 	}, []);
 
 	return [isAppReady, loadAppData, isFirstLaunch];

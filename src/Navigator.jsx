@@ -25,39 +25,44 @@ export default function Navigator({ welcome }) {
 	return (
 		<NavigationContainer>
 			<StatusBar style="light" />
-			{welcome ? (
-				<Stack.Navigator screenOptions={screenOptions}>
-					<Stack.Screen name="Welcome" component={WelcomeScreen} />
-					<Stack.Screen name="Location" component={LocationScreen} />
-					<Stack.Screen
-						name="Location_street"
-						component={LocationStreetScreen}
-					/>
-					<Stack.Screen
-						name="Location_streetNumber"
-						component={LocationStreetNumberScreen}
-					/>
-				</Stack.Navigator>
-			) : (
-				<Tab.Navigator
-					screenOptions={screenOptions}
-					shifting={true}
-					barStyle={{ backgroundColor: colors.primaryLight }}
-					inactiveColor={colors.text}
-					activeColor={colors.accentLight}
-				>
-					<Tab.Screen
-						name="Failures"
-						component={WasteCard}
-						options={{ tabBarLabel: t("navigation:failures") }}
-					/>
-					<Tab.Screen
-						name="Waste"
-						component={WasteScreen}
-						options={{ tabBarLabel: t("navigation:waste") }}
-					/>
-				</Tab.Navigator>
-			)}
+			<Stack.Navigator
+				screenOptions={screenOptions}
+				initialRouteName={welcome ? "Welcome" : "App"}
+			>
+				<Stack.Screen name="Welcome" component={WelcomeScreen} />
+				<Stack.Screen name="Location" component={LocationScreen} />
+				<Stack.Screen name="Location_street" component={LocationStreetScreen} />
+				<Stack.Screen
+					name="Location_streetNumber"
+					component={LocationStreetNumberScreen}
+				/>
+				<Stack.Screen name="App" component={TabNav} />
+			</Stack.Navigator>
 		</NavigationContainer>
+	);
+}
+
+function TabNav() {
+	const { t } = useTranslation();
+
+	return (
+		<Tab.Navigator
+			screenOptions={screenOptions}
+			shifting={true}
+			barStyle={{ backgroundColor: colors.primaryLight }}
+			inactiveColor={colors.text}
+			activeColor={colors.accentLight}
+		>
+			<Tab.Screen
+				name="Failures"
+				component={WasteCard}
+				options={{ tabBarLabel: t("navigation:failures") }}
+			/>
+			<Tab.Screen
+				name="Waste"
+				component={WasteScreen}
+				options={{ tabBarLabel: t("navigation:waste") }}
+			/>
+		</Tab.Navigator>
 	);
 }

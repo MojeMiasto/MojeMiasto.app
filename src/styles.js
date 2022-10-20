@@ -73,7 +73,7 @@ export default StyleSheet.create({
 		fontFamily: "Poppins_300",
 		marginTop: 8,
 		marginLeft: 8,
-		fontSize: 16,
+		fontSize: 18,
 		lineHeight: 24,
 		letterSpacing: 1,
 		color: "#93c29a"
