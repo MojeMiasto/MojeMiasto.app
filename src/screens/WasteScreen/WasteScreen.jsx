@@ -63,7 +63,7 @@ export default function WasteScreen() {
 				<View style={{ height: 100 }} />
 				<NextWasteCard
 					wasteType={wasteTypes[
-						wasteData[0]?.wasteId + 1
+						wasteData[0]?.wasteId
 					]?.wasteName?.toUpperCase()}
 					wasteDate={wasteData[0]?.date}
 				/>
