@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AnimatedSplash from "react-native-animated-splash-screen";
 
 import "./src/IMLocalize";
+import "./src/notifications/wasteNotificationHandler";
 import { colors } from "./src/styles";
 import Navigator from "./src/Navigator";
 import useLoadAppData from "./src/useLoadAppData";

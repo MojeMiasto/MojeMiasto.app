@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "48660183785",
+    "project_id": "mojemiasto-a74d6",
+    "storage_bucket": "mojemiasto-a74d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48660183785:android:16b971a92a4459589f4e78",
+        "android_client_info": {
+          "package_name": "com.mojemiasto.mojemiasto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48660183785-08p79cehkj5irg8lfqca66cj7hfk06h9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgkFe7cqckYK9lWmpP4gTaYYdYyMLU00Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48660183785-08p79cehkj5irg8lfqca66cj7hfk06h9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,9 @@
 {
 	"expo": {
 		"name": "MojeMiasto",
-		"slug": "MojeMiasto",
-		"version": "1.0.0",
+		"slug": "mojemiasto",
+		"owner": "moje-miasto",
+		"version": "0.8.3",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "dark",
