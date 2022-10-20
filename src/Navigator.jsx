@@ -26,19 +26,22 @@ export default function Navigator({ welcome }) {
 				<Stack.Navigator screenOptions={screenOptions}>
 					<Stack.Screen name="Welcome" component={WelcomeScreen} />
 					<Stack.Screen name="Location" component={LocationScreen} />
-					<Stack.Screen name="Location_street" component={LocationStreetScreen} />
+					<Stack.Screen
+						name="Location_street"
+						component={LocationStreetScreen}
+					/>
 				</Stack.Navigator>
 			) : (
 				<Tab.Navigator screenOptions={screenOptions}>
 					<Tab.Screen
-						name="Waste"
-						component={WasteScreen}
-						options={{ tabBarLabel: t("navigation:waste") }}
-					/>
-					<Tab.Screen
 						name="Failures"
 						component={WasteCard}
 						options={{ tabBarLabel: t("navigation:failures") }}
+					/>
+					<Tab.Screen
+						name="Waste"
+						component={WasteScreen}
+						options={{ tabBarLabel: t("navigation:waste") }}
 					/>
 				</Tab.Navigator>
 			)}
