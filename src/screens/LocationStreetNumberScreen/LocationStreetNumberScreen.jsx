@@ -41,6 +41,8 @@ export default function LocationStreetNumberScreen({ navigation, route }) {
 			console.error(e);
 		} finally {
 			// navigation
+			console.log("Address saved");
+			AsyncStorage.setItem("alreadyLaunched", "true");
 		}
 	};
 

@@ -43,7 +43,7 @@ export default StyleSheet.create({
 	},
 	locationContainer: {
 		width: screenWidth - 64,
-		// minHeight: 200,
+		height: 210,
 		maxHeight: 250,
 		backgroundColor: "#1B4332",
 		margin: 32,

@@ -14,8 +14,7 @@ export default StyleSheet.create({
 		width: screenWidth - 64,
 		height: 81,
 		padding: 22,
-		borderRadius: 16,
-		marginBottom: 50
+		borderRadius: 16
 	},
 	button_title: {
 		fontFamily: "Poppins_400",

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./styles_SearchBar";
 import { colors } from "../../styles";
 
-export default function SearchBar({ setValue }) {
+export default function SearchBar({ setValue, placeholder }) {
 	const { t } = useTranslation();
 	const [searchText, setSearchText] = useState("");
 
@@ -27,7 +27,7 @@ export default function SearchBar({ setValue }) {
 				style={{ marginRight: 16 }}
 			/>
 			<TextInput
-				placeholder={t("location:searchStreet")}
+				placeholder={placeholder}
 				style={[styles.textInput]}
 				clearButtonMode="while-editing"
 				placeholderTextColor={"#8AA38E"}

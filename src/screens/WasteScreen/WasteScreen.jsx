@@ -1,13 +1,19 @@
 import { SafeAreaView, View } from "react-native";
 import { useTranslation } from "react-i18next";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import defaultStyles from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
 import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";
+import { useEffect } from "react";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		AsyncStorage.setItem("alreadyLaunched", "false");
+	}, []);
 
 	return (
 		<Background>

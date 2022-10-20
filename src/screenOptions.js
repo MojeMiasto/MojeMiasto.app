@@ -1,10 +1,9 @@
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { colors } from "./styles";
 
 export const screenOptions = ({ route }) => ({
 	headerShown: false,
-	tabBarIcon: ({ focused, color, size }) => {
+	tabBarIcon: ({ focused, color }) => {
 		let iconName;
 
 		if (route.name === "Waste") {
@@ -13,12 +12,6 @@ export const screenOptions = ({ route }) => ({
 			iconName = focused ? "ios-warning" : "ios-warning-outline";
 		}
 
-		return <Ionicons name={iconName} size={size} color={color} />;
-	},
-	tabBarStyle: {
-		backgroundColor: colors.primaryLight,
-		borderTopWidth: 0
-	},
-	tabBarInactiveTintColor: colors.text,
-	tabBarActiveTintColor: colors.accentLight
+		return <Ionicons name={iconName} size={24} color={color} />;
+	}
 });

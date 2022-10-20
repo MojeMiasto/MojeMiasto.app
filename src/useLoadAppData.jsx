@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from "expo-font";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function useLoadAppData() {
 	const [isReady, setIsReady] = useState(false);
 	const [isAppReady, setIsAppReady] = useState(false);
+	const [isFirstLaunch, setIsFirstLaunch] = useState(null);
 
 	async function loadAppData() {
 		try {
@@ -27,6 +29,22 @@ export default function useLoadAppData() {
 			setIsAppReady(true);
 		}
 	}, [isReady]);
+	useEffect(() => {
+		const a = async () => {
+			await AsyncStorage.getItem("alreadyLaunched").then((value) => {
+				if (value == null || value == "false") {
+					AsyncStorage.setItem("alreadyLaunched", "true");
+					setIsFirstLaunch(true);
+					console.log("First launch");
+				} else {
+					setIsFirstLaunch(false);
+					console.log("App already launched");
+				}
+			});
+		};
+		a();
+		// setIsFirstLaunch(true);
+	}, []);
 
-	return [isAppReady, loadAppData];
+	return [isAppReady, loadAppData, isFirstLaunch];
 }

@@ -16,6 +16,7 @@ import LocationConfirmButton from "./LocationStreetScreenConfirmButton";
 import defaultStyles, { screenWidth, colors } from "../../styles";
 
 export default function LocationStreetScreen({ navigation, route }) {
+	const { t } = useTranslation();
 	const { selectedTown } = route.params;
 	const [selectedStreet, setSelectedStreet] = useState("");
 	const [searchText, setSearchText] = useState("");
@@ -36,7 +37,12 @@ export default function LocationStreetScreen({ navigation, route }) {
 		};
 	}
 
-	const onPressHandler = () => {};
+	const onPressHandler = () => {
+		navigation.navigate("Location_streetNumber", {
+			selectedTown,
+			selectedStreet
+		});
+	};
 
 	useEffect(() => {
 		const onMountDataLoad = async () => {
@@ -60,10 +66,13 @@ export default function LocationStreetScreen({ navigation, route }) {
 			<Image
 				source={require("../../assets/img/shakehand.png")}
 				resizeMode="contain"
-				style={{ width: screenWidth, height: 350 }}
+				style={{ width: screenWidth, height: 250 }}
 			/>
 			<KeyboardAvoidingView behavior={"position"}>
-				<SearchBar setValue={searchTextHandler} />
+				<SearchBar
+					setValue={searchTextHandler}
+					placeholder={t("location:searchStreet")}
+				/>
 
 				<ScrollView style={[defaultStyles.locationContainer]}>
 					{streets.length > 0
@@ -78,7 +87,7 @@ export default function LocationStreetScreen({ navigation, route }) {
 									]}
 									key={street.address.street}
 								>
-									{street.address.street}
+									{street.address.street}, {street.address.city}
 								</Text>
 						  ))
 						: null}

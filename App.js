@@ -7,9 +7,8 @@ import Navigator from "./src/Navigator";
 import useLoadAppData from "./src/useLoadAppData";
 
 export default function App() {
-	const [isAppReady, loadAppData] = useLoadAppData();
+	const [isAppReady, loadAppData, isFirstLaunch] = useLoadAppData();
 	const [isSplashReady, setSplashReady] = useState(false);
-	const isFirstLaunch = true;
 
 	useEffect(() => {
 		setTimeout(() => {
