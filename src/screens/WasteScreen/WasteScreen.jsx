@@ -88,18 +88,18 @@ export default function WasteScreen() {
 	}, [wasteTypes, userAddress]);
 	useEffect(() => {
 		let returnArray = [];
-		wasteData.forEach(element => {
+		wasteData.forEach((element) => {
 			if (element.date === wasteData[0].date) {
 				returnArray.push(
 					<NextWasteCard
 						wasteType={wasteTypes[element.wasteId]?.wasteName?.toUpperCase()}
 						wasteDate={element.date}
 					/>
-				)
+				);
 			}
 		});
 		setNextWasteCardArray(returnArray);
-	}, [wasteData])
+	}, [wasteData]);
 
 	useEffect(() => {
 		checkAndUpdateScheduledWasteNotificationsAsync(wasteData);
@@ -143,7 +143,7 @@ export default function WasteScreen() {
 
 						<Carousel
 							width={screenWidth}
-							height={450}
+							height={334}
 							data={uniqueWaste}
 							loop={false}
 							mode={"horizontal-stack"}
@@ -156,9 +156,8 @@ export default function WasteScreen() {
 							}}
 							windowSize={3}
 							pagingEnabled={true}
-
 							panGestureHandlerProps={{
-								activeOffsetX: [-40, 40],
+								activeOffsetX: [-40, 40]
 							}}
 							renderItem={({ index }) => {
 								return (
