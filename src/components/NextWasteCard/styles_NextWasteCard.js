@@ -11,7 +11,8 @@ export default StyleSheet.create({
 		shadowColor: "#000",
 		shadowOffset: { height: 10, width: 0 },
 		shadowOpacity: 0.2,
-		shadowRadius: 10
+		shadowRadius: 10,
+		marginBottom: 11
 	},
 	content: {
 		flex: 1,
