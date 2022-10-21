@@ -27,6 +27,7 @@ export default function WasteScreen() {
 	const [refreshing, setRefreshing] = useState(false);
 	const [wasteDisplayData, setWasteDisplayData] = useState({});
 	const [uniqueWaste, setUniqueWaste] = useState([]);
+	const [nextWasteString, setNextWasteString] = useState("");
 
 	const getWasteTypes = async () => {
 		try {
@@ -85,6 +86,16 @@ export default function WasteScreen() {
 			fetchWasteData();
 		}
 	}, [wasteTypes, userAddress]);
+	useEffect(() => {
+		let returnString = "";
+		wasteData.forEach(element => {
+			if (element.date === wasteData[0].date) returnString += wasteTypes[
+				element.wasteId
+				]?.wasteName?.toUpperCase()+", "
+		});
+		console.log(returnString);
+		setNextWasteString(returnString);
+	}, [wasteData])
 
 	useEffect(() => {
 		checkAndUpdateScheduledWasteNotificationsAsync(wasteData);
@@ -124,16 +135,14 @@ export default function WasteScreen() {
 							{t("waste:next_waste_collection")}
 						</Text>
 						<NextWasteCard
-							wasteType={wasteTypes[
-								wasteData[0]?.wasteId
-							]?.wasteName?.toUpperCase()}
+							wasteType={nextWasteString}
 							wasteDate={wasteData[0]?.date}
 						/>
 						<View style={{ height: 100 }} />
 
 						<Carousel
 							width={screenWidth}
-							height={334}
+							height={450}
 							data={uniqueWaste}
 							loop={false}
 							mode={"horizontal-stack"}
