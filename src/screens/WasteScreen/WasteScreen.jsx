@@ -89,7 +89,7 @@ export default function WasteScreen() {
 	useEffect(() => {
 		let returnArray = [];
 		wasteData.forEach(element => {
-			if (element.date === wasteData[0].date){
+			if (element.date === wasteData[0].date) {
 				returnArray.push(
 					<NextWasteCard
 						wasteType={wasteTypes[element.wasteId]?.wasteName?.toUpperCase()}
@@ -156,6 +156,10 @@ export default function WasteScreen() {
 							}}
 							windowSize={3}
 							pagingEnabled={true}
+
+							panGestureHandlerProps={{
+								activeOffsetX: [-40, 40],
+							}}
 							renderItem={({ index }) => {
 								return (
 									<WasteCard

@@ -18,7 +18,7 @@ export default function WasteCard({
 			</View>
 
 			<ScrollView persistentScrollbar={true}>
-				{wasteData.map((item, index) => {
+				{wasteData.filter((item, index) => index < 5).map((item, index) => {
 					const date = moment(item.date).format("dddd, D MMMM YYYY");
 
 					return (
