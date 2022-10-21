@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, View, RefreshControl } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import defaultStyles from "../../styles.js";
+import defaultStyles, { screenWidth } from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
 import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";
@@ -14,6 +14,8 @@ export default function WasteScreen() {
 	const [wasteData, setWasteData] = useState([]);
 	const [userAddress, setUserAddress] = useState({});
 	const [refreshing, setRefreshing] = useState(false);
+	const [wasteDisplayData, setWasteDisplayData] = useState({});
+	const [uniqueWaste, setUniqueWaste] = useState([]);
 
 	const getAddress = async () => {
 		try {
@@ -47,6 +49,22 @@ export default function WasteScreen() {
 		);
 		const data = await response.json();
 		setWasteData(data.wasteList);
+
+		const uniqueWasteTypes = [
+			...new Set(data.wasteList.map((item) => item.wasteId))
+		].sort();
+		setUniqueWaste(uniqueWasteTypes);
+
+		const wasteDisplayData = uniqueWasteTypes
+			.map((id) =>
+				data.wasteList.map((item) => (item.wasteId == id ? item : null))
+			)
+			.map((item) => item.filter((item) => item != null))
+			.reduce((acc, cur, i) => {
+				acc[uniqueWasteTypes[i]] = cur;
+				return acc;
+			}, {});
+		setWasteDisplayData(wasteDisplayData);
 	};
 
 	useEffect(() => {
@@ -70,7 +88,7 @@ export default function WasteScreen() {
 		<Background>
 			<SafeAreaView style={defaultStyles.wrapper}>
 				<ScrollView
-					style={{ flex: 1, width: "100%" }}
+					style={{ flex: 1, width: screenWidth, paddingLeft: 16 }}
 					refreshControl={
 						<RefreshControl
 							refreshing={refreshing}
@@ -86,9 +104,18 @@ export default function WasteScreen() {
 						wasteDate={wasteData[0]?.date}
 					/>
 					<View style={{ height: 100 }} />
-					{wasteData.map((waste, index) => {
-						return <WasteCard wasteData={waste} wasteTypes={wasteTypes} />;
-					})}
+
+					<ScrollView horizontal={true} pagingEnabled={true}>
+						{uniqueWaste.map((waste, index) => {
+							return (
+								<WasteCard
+									wasteData={wasteDisplayData[waste]}
+									wasteTypes={wasteTypes}
+									key={index}
+								/>
+							);
+						})}
+					</ScrollView>
 				</ScrollView>
 			</SafeAreaView>
 		</Background>

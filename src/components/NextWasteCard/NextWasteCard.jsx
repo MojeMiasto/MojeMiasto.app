@@ -24,5 +24,4 @@ export default function NextWasteCard({ wasteType, wasteDate }) {
 			</View>
 		</View>
 	);
-	``;
 }
