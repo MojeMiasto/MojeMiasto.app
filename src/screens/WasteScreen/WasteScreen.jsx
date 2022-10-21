@@ -16,6 +16,7 @@ import Background from "../../components/Background/Background.jsx";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkAndUpdateScheduledWasteNotificationsAsync } from "../../notifications/notificationsRepository";
+import getAddress from "../../getAddress.js";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
@@ -25,15 +26,6 @@ export default function WasteScreen() {
 	const [refreshing, setRefreshing] = useState(false);
 	const [wasteDisplayData, setWasteDisplayData] = useState({});
 	const [uniqueWaste, setUniqueWaste] = useState([]);
-
-	const getAddress = async () => {
-		try {
-			const jsonValue = await AsyncStorage.getItem("userAddress");
-			setUserAddress(JSON.parse(jsonValue));
-		} catch (e) {
-			console.error(e);
-		}
-	};
 
 	const getWasteTypes = async () => {
 		try {
@@ -79,7 +71,7 @@ export default function WasteScreen() {
 	useEffect(() => {
 		const a = async () => {
 			await getWasteTypes();
-			await getAddress();
+			await getAddress(setUserAddress);
 		};
 		a();
 	}, []);
