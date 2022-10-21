@@ -14,6 +14,15 @@ export default function PollutionScreen() {
 	const [userAddress, setUserAddress] = useState({});
 	const [pollutionData, setPollutionData] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
+	const [refreshing, setRefreshing] = useState(false);
+
+	const refreshPollutionData = async () => {
+		setRefreshing(true);
+		await fetchPollutionData();
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 1000);
+	};
 
 	const fetchPollutionData = async () => {
 		const response = await fetch(
@@ -45,7 +54,14 @@ export default function PollutionScreen() {
 			<View style={{ height: 64 }} />
 			<Text style={defaultStyles.title1}>{t("pollution:pollution_area")}</Text>
 			<View style={{ height: 8 }} />
-			<ScrollView>
+			<ScrollView
+				refreshControl={
+					<RefreshControl
+						refreshing={refreshing}
+						onRefresh={refreshPollutionData}
+					/>
+				}
+			>
 				{isLoading && (
 					<ActivityIndicator size={"large"} color={colors.accentLight} />
 				)}
