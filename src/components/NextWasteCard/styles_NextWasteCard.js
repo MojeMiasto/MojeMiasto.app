@@ -19,12 +19,13 @@ export default StyleSheet.create({
 		justifyContent: "space-around"
 	},
 	title: {
+		fontFamily: "Poppins_400",
 		fontSize: 24,
-		fontWeight: "bold",
-		letterSpacing: 1,
+		letterSpacing: 0.5,
 		color: "#D8F3DC"
 	},
 	date: {
+		fontFamily: "Poppins_300",
 		color: "#B7E4C7"
 	}
 });
