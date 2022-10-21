@@ -147,6 +147,9 @@ export default function WasteScreen() {
 							data={uniqueWaste}
 							loop={false}
 							mode={"horizontal-stack"}
+							panGestureHandlerProps={{
+								activeOffsetX: [-20, 20],
+							}}
 							modeConfig={{
 								snapDirection: "left",
 								stackInterval: 18,
