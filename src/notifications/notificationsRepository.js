@@ -26,10 +26,8 @@ export async function scheduleNotificationAsync(model, sendDate) {
 	});
 }
 
-export async function checkAndUpdateScheduledWasteNotificationsAsync(
-	wasteList
-) {
-	wasteList = wasteList.slice(0, 10);
+export async function checkAndUpdateScheduledWasteNotificationsAsync(wasteList) {
+	wasteList = wasteList.slice(0, 20);
 	const scheduledNotifications =
 		await Notifications.getAllScheduledNotificationsAsync();
 	for (const element of wasteList) {
