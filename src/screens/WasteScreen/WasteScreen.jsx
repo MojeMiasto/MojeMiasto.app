@@ -16,6 +16,7 @@ import Background from "../../components/Background/Background.jsx";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkAndUpdateScheduledWasteNotificationsAsync } from "../../notifications/notificationsRepository";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
@@ -98,72 +99,74 @@ export default function WasteScreen() {
 	}, []);
 
 	return (
-		<Background>
-			<SafeAreaView style={defaultStyles.wrapper}>
-				<ScrollView
-					style={{ flex: 1, width: screenWidth, paddingLeft: 16 }}
-					refreshControl={
-						<RefreshControl
-							refreshing={refreshing}
-							onRefresh={refreshWasteData}
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<Background>
+				<SafeAreaView style={defaultStyles.wrapper}>
+					<ScrollView
+						style={{ flex: 1, width: screenWidth, paddingLeft: 16 }}
+						refreshControl={
+							<RefreshControl
+								refreshing={refreshing}
+								onRefresh={refreshWasteData}
+							/>
+						}
+					>
+						<View style={{ height: 24 }} />
+						<Text
+							style={[
+								defaultStyles.location,
+								{ textAlign: "center", paddingRight: 16 }
+							]}
+						>
+							{userAddress?.address?.street} {userAddress?.address?.houseNumber},{" "}
+							{userAddress?.address?.city}{" "}
+							<Ionicons name="chevron-down-outline" size={16} />
+						</Text>
+						<View style={{ height: 48 }} />
+						<Text
+							style={[
+								defaultStyles.title1,
+								{ textAlign: "center", paddingRight: 16, marginBottom: 32 }
+							]}
+						>
+							{t("waste:next_waste_collection")}
+						</Text>
+						<NextWasteCard
+							wasteType={wasteTypes[
+								wasteData[0]?.wasteId
+							]?.wasteName?.toUpperCase()}
+							wasteDate={wasteData[0]?.date}
 						/>
-					}
-				>
-					<View style={{ height: 24 }} />
-					<Text
-						style={[
-							defaultStyles.location,
-							{ textAlign: "center", paddingRight: 16 }
-						]}
-					>
-						{userAddress?.address?.street} {userAddress?.address?.houseNumber},{" "}
-						{userAddress?.address?.city}{" "}
-						<Ionicons name="chevron-down-outline" size={16} />
-					</Text>
-					<View style={{ height: 48 }} />
-					<Text
-						style={[
-							defaultStyles.title1,
-							{ textAlign: "center", paddingRight: 16, marginBottom: 32 }
-						]}
-					>
-						{t("waste:next_waste_collection")}
-					</Text>
-					<NextWasteCard
-						wasteType={wasteTypes[
-							wasteData[0]?.wasteId
-						]?.wasteName?.toUpperCase()}
-						wasteDate={wasteData[0]?.date}
-					/>
-					<View style={{ height: 100 }} />
+						<View style={{ height: 100 }} />
 
-					<Carousel
-						width={screenWidth}
-						height={334}
-						data={uniqueWaste}
-						loop={false}
-						mode={"horizontal-stack"}
-						modeConfig={{
-							snapDirection: "left",
-							stackInterval: 18,
-							showLength: 3,
-							opacityInterval: 0.5,
-							rotateZDeg: 10
-						}}
-						windowSize={3}
-						pagingEnabled={true}
-						renderItem={({ index }) => {
-							return (
-								<WasteCard
-									wasteData={wasteDisplayData[uniqueWaste[index]]}
-									wasteTypes={wasteTypes}
-									key={index}
-								/>
-							);
-						}}
-					/>
-				</ScrollView>
-			</SafeAreaView>
-		</Background>
+						<Carousel
+							width={screenWidth}
+							height={334}
+							data={uniqueWaste}
+							loop={false}
+							/*mode={"horizontal-stack"}
+							modeConfig={{
+								snapDirection: "left",
+								stackInterval: 18,
+								showLength: 3,
+								opacityInterval: 0.5,
+								rotateZDeg: 10
+							}}*/
+							windowSize={3}
+							pagingEnabled={true}
+							renderItem={({ index }) => {
+								return (
+									<WasteCard
+										wasteData={wasteDisplayData[uniqueWaste[index]]}
+										wasteTypes={wasteTypes}
+										key={index}
+									/>
+								);
+							}}
+						/>
+					</ScrollView>
+				</SafeAreaView>
+			</Background>
+		</GestureHandlerRootView>
 	);
 }
