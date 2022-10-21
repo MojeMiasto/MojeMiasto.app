@@ -1,4 +1,5 @@
-import { View, Text, Image } from "react-native";
+import moment from "moment/moment";
+import { View, Text, Image, ScrollView } from "react-native";
 import calendar from "../../assets/img/calendar.png";
 import style from "./styles_WasteCard";
 
@@ -16,24 +17,17 @@ export default function WasteCard({
 				<Image source={calendar} />
 			</View>
 
-			<View>
+			<ScrollView persistentScrollbar={true}>
 				{wasteData.map((item, index) => {
-					const date = new Date(item.date);
-					const dateOptions = {
-						weekday: "long",
-						year: "numeric",
-						month: "long",
-						day: "numeric"
-					};
-					const dateFormatted = date.toLocaleDateString("default", dateOptions);
+					const date = moment(item.date).format("dddd, D MMMM YYYY");
 
 					return (
 						<Text key={index} style={style.text}>
-							{dateFormatted}
+							{date}
 						</Text>
 					);
 				})}
-			</View>
+			</ScrollView>
 		</View>
 	);
 }
