@@ -1,15 +1,11 @@
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import {Platform} from "react-native";
+import {messageModel} from './wasteNotificationModel'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {cancelAllScheduledNotificationsAsync} from "expo-notifications";
 
-export async function sendPushNotification(expoPushToken) {
-    const message = {
-        to: expoPushToken,
-        sound: 'default',
-        title: 'Original Title',
-        body: 'And here is the body!',
-        data: { someData: 'goes here' },
-    };
+export async function sendPushNotification(model) {
 
     await fetch('https://exp.host/--/api/v2/push/send', {
         method: 'POST',
@@ -18,8 +14,35 @@ export async function sendPushNotification(expoPushToken) {
             'Accept-encoding': 'gzip, deflate',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(message),
+        body: JSON.stringify(model),
     });
+}
+
+export async function scheduleNotificationAsync(model, sendDate) {
+    const trigger = new Date(sendDate)
+    await Notifications.scheduleNotificationAsync({
+        content: model,
+        trigger
+    });
+}
+
+export async function checkAndUpdateScheduledWasteNotificationsAsync(wasteList){
+    wasteList = wasteList.slice(0, 5);
+    const scheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
+    for (const element of wasteList) {
+        try{
+            const isScheduled = scheduledNotifications.find(element1 => element.date === element1.content.data.date && element.wasteId === element1.content.data.wasteId)
+            if (!isScheduled){
+                const wasteTypes = JSON.parse(await AsyncStorage.getItem("wasteTypes"));
+                const message = messageModel(element.date, wasteTypes[element.wasteId].wasteName, element);
+                await scheduleNotificationAsync(message, element.date)
+            }
+        }catch (e) {
+            console.log('not waste notification')
+        }
+    }
+    //await cancelAllScheduledNotificationsAsync()
+    console.log(await Notifications.getAllScheduledNotificationsAsync());
 }
 
 export async function registerForPushNotificationsAsync() {
