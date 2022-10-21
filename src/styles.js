@@ -19,7 +19,8 @@ export default StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		padding: defaultPadding,
-		margin: 0
+		margin: 0,
+		paddingBottom: 0
 		// backgroundColor: "#081C15"
 	},
 	background: {
