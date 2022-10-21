@@ -4,6 +4,7 @@ import { Platform } from "react-native";
 import { messageModel } from "./wasteNotificationModel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { cancelAllScheduledNotificationsAsync } from "expo-notifications";
+import moment from "moment";
 
 export async function sendPushNotification(model) {
 	await fetch("https://exp.host/--/api/v2/push/send", {
@@ -28,7 +29,7 @@ export async function scheduleNotificationAsync(model, sendDate) {
 export async function checkAndUpdateScheduledWasteNotificationsAsync(
 	wasteList
 ) {
-	wasteList = wasteList.slice(0, 5);
+	wasteList = wasteList.slice(0, 10);
 	const scheduledNotifications =
 		await Notifications.getAllScheduledNotificationsAsync();
 	for (const element of wasteList) {
@@ -45,14 +46,19 @@ export async function checkAndUpdateScheduledWasteNotificationsAsync(
 					wasteTypes[element.wasteId].wasteName,
 					element
 				);
-				await scheduleNotificationAsync(message, element.date);
+				const sendDate = moment(element.date)
+					.subtract(1, "days")
+					.hour(17)
+					.minute(0)
+					.seconds(0);
+				await scheduleNotificationAsync(message, sendDate);
 			}
 		} catch (e) {
 			console.log("not waste notification");
 		}
 	}
 	//await cancelAllScheduledNotificationsAsync()
-	// console.log(await Notifications.getAllScheduledNotificationsAsync());
+	//console.log(await Notifications.getAllScheduledNotificationsAsync())
 }
 
 export async function registerForPushNotificationsAsync() {
