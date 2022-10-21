@@ -2,9 +2,13 @@ import { View, Text, Image } from "react-native";
 import calendar from "../../assets/img/calendar.png";
 import style from "./styles_WasteCard";
 
-export default function WasteCard({ wasteData = [], wasteTypes = [] }) {
+export default function WasteCard({
+	wasteData = [],
+	wasteTypes = [],
+	containerStyle = {}
+}) {
 	return (
-		<View style={style.container}>
+		<View style={[style.container, containerStyle]}>
 			<View style={style.content}>
 				<Text style={style.title}>
 					{wasteTypes[wasteData[0]?.wasteId]?.wasteName}

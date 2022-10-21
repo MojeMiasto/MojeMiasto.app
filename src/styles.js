@@ -29,9 +29,15 @@ export default StyleSheet.create({
 		width: "100%",
 		height: "100%"
 	},
+	location: {
+		fontSize: 16,
+		color: colors.textDark,
+		letterSpacing: 1,
+		fontFamily: "Poppins_300"
+	},
 	title: {
 		fontSize: 24,
-		fontWeight: "bold",
+		fontFamily: "Poppins_500",
 		letterSpacing: 1,
 		color: colors.text
 	},

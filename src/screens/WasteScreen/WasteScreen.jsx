@@ -1,6 +1,13 @@
-import { SafeAreaView, ScrollView, View, RefreshControl } from "react-native";
+import {
+	SafeAreaView,
+	ScrollView,
+	View,
+	RefreshControl,
+	Text
+} from "react-native";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-native-reanimated-carousel";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import defaultStyles, { screenWidth } from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
@@ -102,7 +109,26 @@ export default function WasteScreen() {
 						/>
 					}
 				>
-					<View style={{ height: 100 }} />
+					<View style={{ height: 24 }} />
+					<Text
+						style={[
+							defaultStyles.location,
+							{ textAlign: "center", paddingRight: 16 }
+						]}
+					>
+						{userAddress?.address.street} {userAddress?.address.houseNumber},{" "}
+						{userAddress?.address.city}{" "}
+						<Ionicons name="chevron-down-outline" size={16} />
+					</Text>
+					<View style={{ height: 48 }} />
+					<Text
+						style={[
+							defaultStyles.title1,
+							{ textAlign: "center", paddingRight: 16, marginBottom: 32 }
+						]}
+					>
+						{t("waste:next_waste_collection")}
+					</Text>
 					<NextWasteCard
 						wasteType={wasteTypes[
 							wasteData[0]?.wasteId
@@ -111,19 +137,29 @@ export default function WasteScreen() {
 					/>
 					<View style={{ height: 100 }} />
 
-					{/* <ScrollView horizontal={true} pagingEnabled={true}>
-						{uniqueWaste.map((waste, index) => {
+					<Carousel
+						width={screenWidth}
+						data={uniqueWaste}
+						loop={false}
+						mode={"horizontal-stack"}
+						modeConfig={{
+							snapDirection: "left",
+							stackInterval: 18,
+							showLength: 3,
+							opacityInterval: 0.5,
+							rotateZDeg: 10
+						}}
+						pagingEnabled={true}
+						renderItem={({ index }) => {
 							return (
 								<WasteCard
-									wasteData={wasteDisplayData[waste]}
+									wasteData={wasteDisplayData[uniqueWaste[index]]}
 									wasteTypes={wasteTypes}
 									key={index}
 								/>
 							);
-						})}
-					</ScrollView> */}
-
-					{/* <Carousel /> */}
+						}}
+					/>
 				</ScrollView>
 			</SafeAreaView>
 		</Background>
