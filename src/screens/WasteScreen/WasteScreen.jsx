@@ -1,5 +1,6 @@
 import { SafeAreaView, ScrollView, View, RefreshControl } from "react-native";
 import { useTranslation } from "react-i18next";
+import Carousel from "react-native-reanimated-carousel";
 
 import defaultStyles, { screenWidth } from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
@@ -7,9 +8,7 @@ import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-	checkAndUpdateScheduledWasteNotificationsAsync
-} from "../../notifications/notificationsRepository";
+import { checkAndUpdateScheduledWasteNotificationsAsync } from "../../notifications/notificationsRepository";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
@@ -88,8 +87,8 @@ export default function WasteScreen() {
 	}, [wasteTypes, userAddress]);
 
 	useEffect(() => {
-		checkAndUpdateScheduledWasteNotificationsAsync(wasteData)
-	}, [])
+		checkAndUpdateScheduledWasteNotificationsAsync(wasteData);
+	}, []);
 
 	return (
 		<Background>
@@ -112,7 +111,7 @@ export default function WasteScreen() {
 					/>
 					<View style={{ height: 100 }} />
 
-					<ScrollView horizontal={true} pagingEnabled={true}>
+					{/* <ScrollView horizontal={true} pagingEnabled={true}>
 						{uniqueWaste.map((waste, index) => {
 							return (
 								<WasteCard
@@ -122,7 +121,9 @@ export default function WasteScreen() {
 								/>
 							);
 						})}
-					</ScrollView>
+					</ScrollView> */}
+
+					{/* <Carousel /> */}
 				</ScrollView>
 			</SafeAreaView>
 		</Background>
