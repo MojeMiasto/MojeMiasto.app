@@ -116,8 +116,8 @@ export default function WasteScreen() {
 							{ textAlign: "center", paddingRight: 16 }
 						]}
 					>
-						{userAddress?.address.street} {userAddress?.address.houseNumber},{" "}
-						{userAddress?.address.city}{" "}
+						{userAddress?.address?.street} {userAddress?.address?.houseNumber},{" "}
+						{userAddress?.address?.city}{" "}
 						<Ionicons name="chevron-down-outline" size={16} />
 					</Text>
 					<View style={{ height: 48 }} />
