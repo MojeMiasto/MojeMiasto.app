@@ -150,6 +150,9 @@ export default function WasteScreen() {
 							opacityInterval: 0.5,
 							rotateZDeg: 10
 						}}
+						panGestureHandlerProps={{
+							activeOffsetX: [-10, 10]
+						}}
 						pagingEnabled={true}
 						renderItem={({ index }) => {
 							return (
