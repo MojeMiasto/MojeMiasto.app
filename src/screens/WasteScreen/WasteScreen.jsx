@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, ScrollView, View, RefreshControl } from "react-native";
 import { useTranslation } from "react-i18next";
 
 import defaultStyles from "../../styles.js";
@@ -13,6 +13,7 @@ export default function WasteScreen() {
 	const [wasteTypes, setWasteTypes] = useState({});
 	const [wasteData, setWasteData] = useState([]);
 	const [userAddress, setUserAddress] = useState({});
+	const [refreshing, setRefreshing] = useState(false);
 
 	const getAddress = async () => {
 		try {
@@ -30,6 +31,14 @@ export default function WasteScreen() {
 		} catch (e) {
 			console.error(e);
 		}
+	};
+
+	const refreshWasteData = async () => {
+		setRefreshing(true);
+		await fetchWasteData();
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 1000);
 	};
 
 	const fetchWasteData = async () => {
@@ -60,15 +69,27 @@ export default function WasteScreen() {
 	return (
 		<Background>
 			<SafeAreaView style={defaultStyles.wrapper}>
-				<View style={{ height: 100 }} />
-				<NextWasteCard
-					wasteType={wasteTypes[
-						wasteData[0]?.wasteId
-					]?.wasteName?.toUpperCase()}
-					wasteDate={wasteData[0]?.date}
-				/>
-				<View style={{ height: 100 }} />
-				<WasteCard />
+				<ScrollView
+					style={{ flex: 1, width: "100%" }}
+					refreshControl={
+						<RefreshControl
+							refreshing={refreshing}
+							onRefresh={refreshWasteData}
+						/>
+					}
+				>
+					<View style={{ height: 100 }} />
+					<NextWasteCard
+						wasteType={wasteTypes[
+							wasteData[0]?.wasteId
+						]?.wasteName?.toUpperCase()}
+						wasteDate={wasteData[0]?.date}
+					/>
+					<View style={{ height: 100 }} />
+					{wasteData.map((waste, index) => {
+						return <WasteCard wasteData={waste} wasteTypes={wasteTypes} />;
+					})}
+				</ScrollView>
 			</SafeAreaView>
 		</Background>
 	);
