@@ -37,14 +37,14 @@ export async function checkAndUpdateScheduledWasteNotificationsAsync(wasteList){
                 const wasteTypes = JSON.parse(await AsyncStorage.getItem("wasteTypes"));
                 const message = messageModel(element.date, wasteTypes[element.wasteId].wasteName, element);
                 const sendDate = moment(element.date).subtract(1, 'days').hour(17).minute(0).seconds(0);
-                await scheduleNotificationAsync(message, sendDate)
+                await scheduleNotificationAsync(message, sendDate);
             }
         }catch (e) {
             console.log('not waste notification')
         }
     }
     //await cancelAllScheduledNotificationsAsync()
-    console.log(await Notifications.getAllScheduledNotificationsAsync())
+    //console.log(await Notifications.getAllScheduledNotificationsAsync())
 }
 
 export async function registerForPushNotificationsAsync() {
