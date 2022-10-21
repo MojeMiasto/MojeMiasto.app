@@ -139,6 +139,7 @@ export default function WasteScreen() {
 
 					<Carousel
 						width={screenWidth}
+						height={334}
 						data={uniqueWaste}
 						loop={false}
 						mode={"horizontal-stack"}
