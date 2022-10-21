@@ -7,6 +7,9 @@ import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+	checkAndUpdateScheduledWasteNotificationsAsync
+} from "../../notifications/notificationsRepository";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
@@ -83,6 +86,10 @@ export default function WasteScreen() {
 			fetchWasteData();
 		}
 	}, [wasteTypes, userAddress]);
+
+	useEffect(() => {
+		checkAndUpdateScheduledWasteNotificationsAsync(wasteData)
+	}, [])
 
 	return (
 		<Background>
