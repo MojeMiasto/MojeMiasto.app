@@ -118,6 +118,8 @@ export default function WasteScreen() {
 						style={{ flex: 1, width: screenWidth, paddingLeft: 16 }}
 						refreshControl={
 							<RefreshControl
+								tintColor={colors.accentLight}
+								colors={[colors.accentLight]}
 								refreshing={refreshing}
 								onRefresh={refreshWasteData}
 							/>

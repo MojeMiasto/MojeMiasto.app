@@ -63,6 +63,8 @@ export default function PollutionScreen() {
 			<ScrollView
 				refreshControl={
 					<RefreshControl
+						tintColor={colors.accentLight}
+						colors={[colors.accentLight]}
 						refreshing={refreshing}
 						onRefresh={refreshPollutionData}
 					/>
