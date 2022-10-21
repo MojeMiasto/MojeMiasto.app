@@ -98,7 +98,7 @@ export default function WasteScreen() {
 					<NextWasteCard
 						wasteType={wasteTypes[element.wasteId]?.wasteName?.toUpperCase()}
 						wasteDate={element.date}
-						key={element.date}
+						key={element.wasteId}
 					/>
 				);
 			}
