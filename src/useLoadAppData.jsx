@@ -50,7 +50,7 @@ export default function useLoadAppData() {
 			});
 		};
 		a();
-		// setIsFirstLaunch(false);
+		// setIsFirstLaunch(true);
 	}, []);
 
 	return [isAppReady, loadAppData, isFirstLaunch];
