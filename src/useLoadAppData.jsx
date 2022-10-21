@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Feather from "@expo/vector-icons/Feather";
 import * as Font from "expo-font";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -17,6 +18,7 @@ export default function useLoadAppData() {
 				Vollkorn_400: require("./assets/fonts/Vollkorn-Regular.ttf")
 			});
 			await Font.loadAsync(Ionicons.font);
+			await Font.loadAsync(Feather.font);
 			await new Promise((resolve) => setTimeout(resolve, 2000));
 		} catch (e) {
 			console.error(e);

@@ -4,7 +4,7 @@ import { colors } from "../../styles";
 export default StyleSheet.create({
 	container: {
 		width: Dimensions.get("window").width - 32,
-		// height: 334,
+		height: 334,
 		backgroundColor: "#1B4332",
 		padding: 24,
 		borderRadius: 16,

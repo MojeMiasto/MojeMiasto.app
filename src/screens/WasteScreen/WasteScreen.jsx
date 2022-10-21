@@ -3,13 +3,14 @@ import {
 	ScrollView,
 	View,
 	RefreshControl,
-	Text
+	Text,
+	ActivityIndicator
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-native-reanimated-carousel";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import defaultStyles, { screenWidth } from "../../styles.js";
+import defaultStyles, { screenWidth, colors } from "../../styles.js";
 import NextWasteCard from "../../components/NextWasteCard/NextWasteCard";
 import WasteCard from "../../components/WasteCard/WasteCard.jsx";
 import Background from "../../components/Background/Background.jsx";
@@ -28,6 +29,7 @@ export default function WasteScreen() {
 	const [wasteDisplayData, setWasteDisplayData] = useState({});
 	const [uniqueWaste, setUniqueWaste] = useState([]);
 	const [nextWasteCardArray, setNextWasteCardArray] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const getWasteTypes = async () => {
 		try {
@@ -68,6 +70,7 @@ export default function WasteScreen() {
 				return acc;
 			}, {});
 		setWasteDisplayData(wasteDisplayData);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -86,6 +89,7 @@ export default function WasteScreen() {
 			fetchWasteData();
 		}
 	}, [wasteTypes, userAddress]);
+
 	useEffect(() => {
 		let returnArray = [];
 		wasteData.forEach((element) => {
@@ -94,6 +98,7 @@ export default function WasteScreen() {
 					<NextWasteCard
 						wasteType={wasteTypes[element.wasteId]?.wasteName?.toUpperCase()}
 						wasteDate={element.date}
+						key={element.date}
 					/>
 				);
 			}
@@ -138,7 +143,12 @@ export default function WasteScreen() {
 						>
 							{t("waste:next_waste_collection")}
 						</Text>
+						{isLoading && (
+							<ActivityIndicator size={"large"} color={colors.accentLight} />
+						)}
+
 						{nextWasteCardArray}
+
 						<View style={{ height: 100 }} />
 
 						<Carousel
@@ -147,9 +157,6 @@ export default function WasteScreen() {
 							data={uniqueWaste}
 							loop={false}
 							mode={"horizontal-stack"}
-							panGestureHandlerProps={{
-								activeOffsetX: [-20, 20],
-							}}
 							modeConfig={{
 								snapDirection: "left",
 								stackInterval: 18,
