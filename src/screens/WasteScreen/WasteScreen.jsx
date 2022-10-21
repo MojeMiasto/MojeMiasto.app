@@ -136,14 +136,14 @@ export default function WasteScreen() {
 							height={334}
 							data={uniqueWaste}
 							loop={false}
-							/*mode={"horizontal-stack"}
+							mode={"horizontal-stack"}
 							modeConfig={{
 								snapDirection: "left",
 								stackInterval: 18,
 								showLength: 3,
 								opacityInterval: 0.5,
 								rotateZDeg: 10
-							}}*/
+							}}
 							windowSize={3}
 							pagingEnabled={true}
 							renderItem={({ index }) => {
