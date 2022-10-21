@@ -1,9 +1,9 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import Background from "../../components/Background/Background.jsx";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 
-import defaultStyles from "../../styles.js";
+import defaultStyles, { colors } from "../../styles.js";
 import PollutionStationCard from "../../components/PollutionStationCard/PollutionStationCard.jsx";
 import getAddress from "../../getAddress.js";
 import PollutionCard from "../../components/PollutionCard/PollutionCard.jsx";
@@ -13,6 +13,7 @@ export default function PollutionScreen() {
 	const [stationData, setStationData] = useState({});
 	const [userAddress, setUserAddress] = useState({});
 	const [pollutionData, setPollutionData] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchPollutionData = async () => {
 		const response = await fetch(
@@ -21,6 +22,7 @@ export default function PollutionScreen() {
 		const data = await response.json();
 		setPollutionData(data[0].stationData);
 		setStationData(data[0].stationInfo);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -44,6 +46,9 @@ export default function PollutionScreen() {
 			<Text style={defaultStyles.title1}>{t("pollution:pollution_area")}</Text>
 			<View style={{ height: 8 }} />
 			<ScrollView>
+				{isLoading && (
+					<ActivityIndicator size={"large"} color={colors.accentLight} />
+				)}
 				{pollutionData.stSourceDataDate && (
 					<PollutionCard
 						indexLevel={pollutionData.stIndexLevel}
