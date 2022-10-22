@@ -52,7 +52,7 @@ function TabNav() {
 		<Tab.Navigator
 			screenOptions={screenOptions}
 			shifting={true}
-			barStyle={{ backgroundColor: colors.primaryLight, height: 90 }}
+			barStyle={{ backgroundColor: colors.primaryLight }}
 			inactiveColor={colors.text}
 			activeColor={colors.accentLight}
 		>
