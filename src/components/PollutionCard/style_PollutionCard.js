@@ -17,7 +17,8 @@ export default StyleSheet.create({
 	},
 	row: {
 		flexDirection: "row",
-		justifyContent: "space-between"
+		justifyContent: "space-between",
+		alignItems: "center"
 	},
 	title: {
 		fontFamily: "Poppins_400",
@@ -40,5 +41,8 @@ export default StyleSheet.create({
 		flex: 1,
 		paddingLeft: 16,
 		justifyContent: "space-around"
+	},
+	unit: {
+
 	}
 });

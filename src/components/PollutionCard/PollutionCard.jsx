@@ -6,9 +6,9 @@ import style from "./style_PollutionCard.js";
 function pollutionColor(value){
 	switch (value){
 		case 0:
-			return { color: "#000" };
+			return { color: "#4ABF40" };
 		case 1:
-			return { color: "#000" };
+			return { color: "#B0BF51" };
 		case 2:
 			return { color: "#000" };
 		case 3:
@@ -36,7 +36,11 @@ export default function PollutionCard({
 				<Text style={style.text}>
 					{air ? "Jakość powietrza:" : "Poziom stężenia:"}
 				</Text>
-				<Text style={style.textHighlight}>{air ? data?.name : data[0]?.value}</Text>
+				<View style={style.row}>
+					<Text style={[style.textHighlight, pollutionColor(index)]}>{air ? data?.name : Number(data[0]?.value).toFixed(2)}</Text>
+					<Text style={[style.unit, pollutionColor(index)]}>{air ? "" : " µg/m3"}</Text>
+				</View>
+
 			</View>
 			<View style={style.row}>
 				<Text style={style.text}>Godzina pomiaru:</Text>
