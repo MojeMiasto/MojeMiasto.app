@@ -67,14 +67,14 @@ function TabNav() {
 				options={{ tabBarLabel: t("navigation:waste") }}
 			/>
 			<Tab.Screen
-				name="Pollution"
-				component={PollutionScreen}
-				options={{ tabBarLabel: t("navigation:pollution") }}
-			/>
-			<Tab.Screen
 				name="Receipts"
 				component={BillsScreen}
 				options={{ tabBarLabel: t("navigation:bills") }}
+			/>
+			<Tab.Screen
+				name="Pollution"
+				component={PollutionScreen}
+				options={{ tabBarLabel: t("navigation:pollution") }}
 			/>
 		</Tab.Navigator>
 	);
