@@ -3,8 +3,28 @@ import moment from "moment";
 
 import style from "./style_PollutionCard.js";
 
+function pollutionColor(value){
+	switch (value){
+		case 0:
+			return { color: "#000" };
+		case 1:
+			return { color: "#000" };
+		case 2:
+			return { color: "#000" };
+		case 3:
+			return { color: "#000" };
+		case 4:
+			return { color: "#000" };
+		case 5:
+			return { color: "#000" };
+		default:
+			return {};
+	}
+}
+
 export default function PollutionCard({
 	data,
+	index = -1,
 	name,
 	air = false
 }) {

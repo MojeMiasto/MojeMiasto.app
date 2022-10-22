@@ -91,6 +91,7 @@ export default function PollutionScreen() {
 							<PollutionCard
 								data={element?.sensorData}
 								name={element?.sensorName}
+								index={element?.sensorLastIndex}
 								key={element?.sensorName}
 							/>
 						);
