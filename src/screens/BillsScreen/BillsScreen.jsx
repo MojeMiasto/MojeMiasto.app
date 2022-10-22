@@ -34,7 +34,7 @@ export default function BillsScreen() {
 
 	useEffect(() => {
 		getBills()
-	}, [])
+	}, [bills])
 
 	let nearestBill = {}
 	if(bills !== undefined && bills.length > 0) {
