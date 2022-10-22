@@ -9,13 +9,13 @@ export default function PollutionStationCard({ stationData }) {
 		<View style={style.container}>
 			<Image source={pin} />
 			<View style={style.content}>
-				<Text style={style.title}>
+				<Text numberOfLines={1} style={style.title} adjustsFontSizeToFit={true}>
 					Stacja Pomiarowa
-					{/* <Ionicons name="chevron-down-outline" size={24} /> */}
+					<Ionicons name="chevron-down-outline" size={24} />
 				</Text>
 				<Text style={style.text}>{stationData?.name}</Text>
 				<Text style={style.text}>
-					Odległość stacji: {Math.round(stationData?.distance * 10) / 10} km
+					Odległość stacji: {Number(stationData?.distance).toFixed(2)} km
 				</Text>
 			</View>
 		</View>
