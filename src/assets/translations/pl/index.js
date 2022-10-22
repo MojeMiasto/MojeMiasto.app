@@ -5,6 +5,7 @@ import welcome from "./welcome";
 import location from "./location";
 import pollution from "./pollution";
 import failure from "./failure";
+import bills from "./bills";
 
 export default {
 	common,
@@ -13,5 +14,6 @@ export default {
 	welcome,
 	location,
 	pollution,
-	failure
+	failure,
+	bills,
 };

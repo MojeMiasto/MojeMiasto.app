@@ -1,0 +1,16 @@
+export default {
+	newBill: "Nowy rachunek",
+	billName: "Nazwa rachunku",
+	billNamePlaceholder: "Podaj nazwę rachunku",
+	billAmount: "Kwota rachunku",
+	billAmountPlaceholder: "Podaj kwotę rachunku",
+	billDate: "Data rachunku",
+	billDatePlaceholder: "dd / mm / yyyy",
+	cancel: "Anuluj",
+	add: "Dodaj",
+	nearestBill: "Najbliższy rachunek",
+	alertSuccess: "Sukces",
+	billAdded: "Rachunek dodany",
+	alertError: "Błąd",
+	billError: "Nie udało się dodać rachunku, spróbuj ponownie później",
+};

@@ -17,6 +17,7 @@ import FailureScreen from "./screens/FailureScreen/FailureScreen";
 import LocationScreen from "./screens/LocationScreen/LocationScreen";
 import LocationStreetScreen from "./screens/LocationStreetScreen/LocationStreetScreen";
 import LocationStreetNumberScreen from "./screens/LocationStreetNumberScreen/LocationStreetNumberScreen";
+import BillsScreen from "./screens/BillsScreen/BillsScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -69,6 +70,11 @@ function TabNav() {
 				name="Pollution"
 				component={PollutionScreen}
 				options={{ tabBarLabel: t("navigation:pollution") }}
+			/>
+			<Tab.Screen
+				name="Receipts"
+				component={BillsScreen}
+				options={{ tabBarLabel: t("navigation:bills") }}
 			/>
 		</Tab.Navigator>
 	);
