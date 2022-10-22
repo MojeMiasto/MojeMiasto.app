@@ -9,6 +9,30 @@ export default function useLoadAppData() {
 	const [isAppReady, setIsAppReady] = useState(false);
 	const [isFirstLaunch, setIsFirstLaunch] = useState(null);
 
+	async function loadWasteTypes() {
+		const wastedata = await fetch(
+			"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=waste"
+		);
+		const data = await wastedata.json();
+		await AsyncStorage.setItem("wasteTypes", JSON.stringify(data));
+	}
+
+	async function loadFailureTypes() {
+		const failuredata = await fetch(
+			"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=failure_type"
+		);
+		const data = await failuredata.json();
+		await AsyncStorage.setItem("failureTypes", JSON.stringify(data));
+	}
+
+	async function loadFailureCategories() {
+		const failuredata = await fetch(
+			"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=failure_category"
+		);
+		const data = await failuredata.json();
+		await AsyncStorage.setItem("failureCategories", JSON.stringify(data));
+	}
+
 	async function loadAppData() {
 		try {
 			await Font.loadAsync({
@@ -34,15 +58,12 @@ export default function useLoadAppData() {
 	useEffect(() => {
 		const a = async () => {
 			await AsyncStorage.getItem("alreadyLaunched").then(async (value) => {
+				await loadWasteTypes();
+				await loadFailureTypes();
+				await loadFailureCategories();
+
 				if (value == null || value == "false") {
 					await AsyncStorage.setItem("alreadyLaunched", "true");
-
-					const wastedata = await fetch(
-						"https://mojemiasto-api.azurewebsites.net/api/data/entities?topic=waste"
-					);
-					const data = await wastedata.json();
-					await AsyncStorage.setItem("wasteTypes", JSON.stringify(data));
-
 					setIsFirstLaunch(true);
 					console.log("First launch");
 				} else {

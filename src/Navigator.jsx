@@ -12,6 +12,7 @@ import WasteScreen from "./screens/WasteScreen/WasteScreen";
 import { screenOptions } from "./screenOptions";
 import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
 import PollutionScreen from "./screens/PollutionScreen/PollutionScreen";
+import FailureScreen from "./screens/FailureScreen/FailureScreen";
 
 import LocationScreen from "./screens/LocationScreen/LocationScreen";
 import LocationStreetScreen from "./screens/LocationStreetScreen/LocationStreetScreen";
@@ -57,7 +58,7 @@ function TabNav() {
 		>
 			<Tab.Screen
 				name="Failures"
-				component={WasteCard}
+				component={FailureScreen}
 				options={{ tabBarLabel: t("navigation:failures") }}
 			/>
 			<Tab.Screen
@@ -66,14 +67,14 @@ function TabNav() {
 				options={{ tabBarLabel: t("navigation:waste") }}
 			/>
 			<Tab.Screen
-				name="Pollution"
-				component={PollutionScreen}
-				options={{ tabBarLabel: t("navigation:pollution") }}
-			/>
-			<Tab.Screen
 				name="Receipts"
 				component={BillsScreen}
 				options={{ tabBarLabel: t("navigation:bills") }}
+			/>
+			<Tab.Screen
+				name="Pollution"
+				component={PollutionScreen}
+				options={{ tabBarLabel: t("navigation:pollution") }}
 			/>
 		</Tab.Navigator>
 	);
