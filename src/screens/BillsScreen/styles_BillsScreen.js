@@ -109,28 +109,41 @@ export default StyleSheet.create({
 	},
 	headerContainer: {
 		display: "flex",
-		flexDirection: "row",
-		alignItems: "flex-start",
-		justifyContent: "center",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "flex-start",
 		width: screenWidth,
 		height: "100%",
 	},
-	nearestBillContainer: {
+	NoBillContainer: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
+		width: screenWidth - 32,
+		borderRadius: defaultBorderRadius,
+		height: 160,
+		marginTop: "auto",
+		marginBottom: "auto",
+		backgroundColor: colors.secondaryLight,
+	},
+	BillContainer: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
 		width: screenWidth,
 		height: 160,
-		marginTop: 60,
+		marginTop: 10,
+		marginBottom: 20,
 	},
-	nearestBillTitle: {
+	BillTitle: {
 		fontFamily: "Poppins_400",
 		fontSize: 24,
 		color: colors.text,
-		marginBottom: 16,
+		marginTop: 32,
 	},
-	nearestBillBox: {
+	BillBox: {
 		display: "flex",
 		flexDirection: "row",
 		alignItems: "center",
@@ -139,8 +152,10 @@ export default StyleSheet.create({
 		width: screenWidth - 32,
 		height: 120,
 		borderRadius: defaultBorderRadius,
+		marginBottom: 16,
+		marginTop: 8,
 	},
-	nearestBillContentContainer: {
+	BillContentContainer: {
 		width: "100%",
 		display: "flex",
 		flexDirection: "row",
@@ -148,7 +163,7 @@ export default StyleSheet.create({
 		justifyContent: "space-evenly",
 	},
 
-	nearestBillRightSection: {
+	BillRightSection: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "flex-start",
@@ -156,17 +171,51 @@ export default StyleSheet.create({
 		height: "100%",
 		width: "75%",
 	},
-	nearestBillImage: {
+	BillImage: {
 		width: "25%",
 	},
-	nearestBillContent: {
+	BillContent: {
 		fontFamily: "Poppins_400",
 		fontSize: 22,
 		color: colors.text,
 	},
-	nearestBillDate: {
+	BillDate: {
 		fontFamily: "Poppins_300",
 		fontSize: 16,
 		color: colors.text,
+	},
+	leftSwipe: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "flex-start",
+		width: "100%",
+		height: "100%",
+		backgroundColor: colors.secondaryLight,
+	},
+	leftSwipeText: {
+		fontFamily: "Poppins_400",
+		fontSize: 24,
+		color: colors.text,
+		marginLeft: 16,
+	},
+	icon: {
+		position: "absolute",
+		right: 16,
+	},
+	scrollableBillsView: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "flex-start",
+		width: screenWidth - 32,
+		// height: ,
+	},
+	otherBillData: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
+		height: "100%",
 	},
 });
