@@ -32,7 +32,7 @@ export default function PollutionScreen() {
 
 	const fetchPollutionData = async () => {
 		const response = await fetch(
-			`https://mojemiasto-api.azurewebsites.net/api/pollution/pollutionInfo?geoLat=${userAddress.point.coordinates[1]}&geoLong=${userAddress.point.coordinates[0]}`
+			`https://mojemiasto-api.azurewebsites.net/api/pollution/pollutionData?geoLat=${userAddress.point.coordinates[1]}&geoLong=${userAddress.point.coordinates[0]}`
 		);
 		const data = await response.json();
 		setPollutionData(data[0].stationData);
@@ -73,49 +73,22 @@ export default function PollutionScreen() {
 				{isLoading && (
 					<ActivityIndicator size={"large"} color={colors.accentLight} />
 				)}
-				{pollutionData.stSourceDataDate && (
+				{stationData.stationIndex && (
 					<PollutionCard
-						indexLevel={pollutionData.stIndexLevel}
-						sourceDataDate={pollutionData.stSourceDataDate}
+						data={stationData.stationIndex}
 						name={t("pollution:pollution")}
 						air
 					/>
 				)}
-				{pollutionData.so2SourceDataDate && (
-					<PollutionCard
-						indexLevel={pollutionData.so2IndexLevel}
-						sourceDataDate={pollutionData.so2SourceDataDate}
-						name={t("pollution:so2")}
-					/>
-				)}
-				{pollutionData.no2SourceDataDate && (
-					<PollutionCard
-						indexLevel={pollutionData.no2IndexLevel}
-						sourceDataDate={pollutionData.no2SourceDataDate}
-						name={t("pollution:no2")}
-					/>
-				)}
-				{pollutionData.pm10SourceDataDate && (
-					<PollutionCard
-						indexLevel={pollutionData.pm10IndexLevel}
-						sourceDataDate={pollutionData.pm10SourceDataDate}
-						name={t("pollution:pm10")}
-					/>
-				)}
-				{pollutionData.pm25SourceDataDate && (
-					<PollutionCard
-						indexLevel={pollutionData.pm25IndexLevel}
-						sourceDataDate={pollutionData.pm25SourceDataDate}
-						name={t("pollution:pm25")}
-					/>
-				)}
-				{pollutionData.o3SourceDataDate && (
-					<PollutionCard
-						indexLevel={pollutionData.o3IndexLevel}
-						sourceDataDate={pollutionData.o3SourceDataDate}
-						name={t("pollution:o3")}
-					/>
-				)}
+				{
+					stationData.stationIndex && (pollutionData.map((element) =>
+						(
+							<PollutionCard
+								data={element?.sensorData}
+								name={element?.sensorName}
+							/>
+						)))
+				}
 			</ScrollView>
 		</Background>
 	);
