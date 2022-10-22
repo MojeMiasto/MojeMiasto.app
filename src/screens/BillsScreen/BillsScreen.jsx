@@ -34,9 +34,9 @@ export default function BillsScreen() {
 
 	useEffect(() => {
 		getBills()
-	}, [bills])
+	}, [isModalActive])
 
-	let nearestBill = {}
+	let nearestBill = null
 	if(bills !== undefined && bills.length > 0) {
 		nearestBill = bills[0]
 		bills.shift()
@@ -44,9 +44,9 @@ export default function BillsScreen() {
 
 	return (
 		<Background>
-			{bills.length > 0 ? 
+			<NewBillModal isBillModalActive={isModalActive} hideModal={() => setIsModalActive(false)}/>
+			{bills.length > 0 || nearestBill != null ? 
 			<View>
-				<NewBillModal isBillModalActive={isModalActive} hideModal={() => setIsModalActive(false)}/>
 			
 				<View style={style.headerContainer}>
 					<View style={style.BillContainer}>
@@ -63,7 +63,7 @@ export default function BillsScreen() {
 						<Text style={style.BillTitle}>
 							{t("bills:allBills")}
 							<Pressable onPress={() => setIsModalActive(true)}>
-								<Ionicons name="add-circle-outline" size={24} color={colors.text}  style={styles.icon}  />
+								<Ionicons name="add-circle-outline" size={24} color={colors.text}   />
 							</Pressable>
 						</Text>
 						<ScrollView style={styles.scrollableBillsView}>
@@ -80,12 +80,13 @@ export default function BillsScreen() {
 					</View>
 				</View>		
 			</View>
-			:<View style={style.NoBillContainer}>
-				<Text style={style.BillTitle}>{t("bills:noBills")}</Text>
-				<Text style={style.BillTitle}>{t("bills:clickToAdd")}</Text>
-				<Pressable onPress={() => setIsModalActive(true)}>
-					<Ionicons name="add-circle-outline" size={24} color={colors.text} style={styles.icon} />
+			:
+			<View style={style.NoBillContainer}>
+				<Text style={style.BillTitle}>{t("bills:noBills")} </Text>
+				<Pressable onPress={() => {setIsModalActive(true)}}>
+					<Ionicons name="add-circle-outline" size={24} color={colors.text} />
 				</Pressable>
+
 			</View>
 			
 		}

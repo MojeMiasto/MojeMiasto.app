@@ -1,15 +1,10 @@
-import { StyleSheet, Text, View, Modal, Pressable, TextInput, KeyboardAvoidingView, Alert, Image } from "react-native";
+import { Text, View, Modal, Pressable, TextInput, KeyboardAvoidingView, Alert } from "react-native";
 import React, { useEffect, useState } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons"
-import Background from  "../../components/Background/Background"
-import defaultStyles, { screenWidth, colors } from "../../styles";
 import style from "./styles_BillsScreen"
 import { useTranslation } from "react-i18next";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import uniqueId from "lodash/uniqueId";
-import nearestBillImage from "../../assets/img/billNearest.png";
         
 
 export default function NewBillModal (props)  {
@@ -35,7 +30,7 @@ export default function NewBillModal (props)  {
 			date: billDate
 		}
 		console.log(dataToSave)
-		const bills = await AsyncStorage.getItem("bills").then(
+		await AsyncStorage.getItem("bills").then(
 			(bills) => {
 				try {
 					if (bills) {
@@ -68,12 +63,12 @@ export default function NewBillModal (props)  {
 				visible={isNewBillModalActive}
 				onRequestClose={() => {
 					setIsNewBillModalActive(false);
-                    props.hideModal()
+                    // props.hideModal()
 
 				}}
 				>
   
-				<KeyboardAvoidingView behavior="height" style={style.modalContainer}>
+				<KeyboardAvoidingView behavior="padding" style={style.modalContainer}>
 					<View style={style.modalContent}>
 						<View style={style.modalHr} />
 						<Text style={style.modalTitle}>

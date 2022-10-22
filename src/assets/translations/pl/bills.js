@@ -10,7 +10,7 @@ export default {
 	add: "Dodaj",
 	nearestBill: "Najbliższy rachunek",
 	allBills: "Wszystkie rachunki",
-	noBills: "Brak rachunków",
+	noBills: "Brak rachunków!\nStuknij, aby dodać",
 	clickToAdd: "Kliknij, aby dodać",
 	alertSuccess: "Sukces",
 	billAdded: "Rachunek dodany",
