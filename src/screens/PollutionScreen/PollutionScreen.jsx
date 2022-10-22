@@ -57,7 +57,7 @@ export default function PollutionScreen() {
 		<Background>
 			<View style={{ height: 48 }} />
 			<PollutionStationCard stationData={stationData} />
-			<View style={{ height: 64 }} />
+			<View style={{ height: 32 }} />
 			<AdjustFontSize
 				text={t("pollution:pollution_area")}
 				fontSize={defaultStyles.title1.fontSize}
