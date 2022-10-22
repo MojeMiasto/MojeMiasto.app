@@ -92,7 +92,7 @@ export default function WasteScreen() {
 	}, [wasteTypes, userAddress]);
 
 	useEffect(() => {
-		let returnArray = [];
+		const returnArray = [];
 		wasteData.forEach((element) => {
 			if (element.date === wasteData[0].date) {
 				returnArray.push(
