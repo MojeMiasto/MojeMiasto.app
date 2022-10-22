@@ -101,10 +101,19 @@ export default function FailureScreen() {
 					<View style={{ height: 48 }} />
 
 					<Text style={[defaultStyles.title1, { textAlign: "center" }]}>
-						{t("failure:outage_title")}
+						{t("failure:title")}
 					</Text>
 
 					<View style={{ height: 16 }} />
+
+					{failureData.length === 0 ? (
+						<>
+							<View style={{ height: 32 }} />
+							<Text style={[defaultStyles.subtitle, { textAlign: "center" }]}>
+								{t("failure:empty")}
+							</Text>
+						</>
+					) : null}
 
 					{failureData.map((element) => {
 						return (
