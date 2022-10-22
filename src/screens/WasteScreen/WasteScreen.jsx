@@ -19,6 +19,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkAndUpdateScheduledWasteNotificationsAsync } from "../../notifications/notificationsRepository";
 import getAddress from "../../getAddress.js";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { AdjustFontSize } from "../../AdjustFontSize.jsx";
 
 export default function WasteScreen() {
 	const { t } = useTranslation();
@@ -137,14 +138,17 @@ export default function WasteScreen() {
 							<Ionicons name="chevron-down-outline" size={16} />
 						</Text>
 						<View style={{ height: 48 }} />
-						<Text
+
+						<AdjustFontSize
+							text={t("waste:next_waste_collection")}
+							fontSize={defaultStyles.title1.fontSize}
+							numberOfLines={1}
 							style={[
 								defaultStyles.title1,
 								{ textAlign: "center", paddingRight: 16, marginBottom: 32 }
 							]}
-						>
-							{t("waste:next_waste_collection")}
-						</Text>
+						/>
+
 						{isLoading && (
 							<ActivityIndicator size={"large"} color={colors.accentLight} />
 						)}

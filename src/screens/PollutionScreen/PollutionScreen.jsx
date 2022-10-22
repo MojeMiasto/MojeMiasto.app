@@ -1,6 +1,5 @@
 import {
 	View,
-	Text,
 	ScrollView,
 	ActivityIndicator,
 	RefreshControl
@@ -8,6 +7,7 @@ import {
 import Background from "../../components/Background/Background.jsx";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import { AdjustFontSize } from "../../AdjustFontSize.jsx";
 
 import defaultStyles, { colors } from "../../styles.js";
 import PollutionStationCard from "../../components/PollutionStationCard/PollutionStationCard.jsx";
@@ -58,7 +58,12 @@ export default function PollutionScreen() {
 			<View style={{ height: 48 }} />
 			<PollutionStationCard stationData={stationData} />
 			<View style={{ height: 64 }} />
-			<Text style={defaultStyles.title1}>{t("pollution:pollution_area")}</Text>
+			<AdjustFontSize
+				text={t("pollution:pollution_area")}
+				fontSize={defaultStyles.title1.fontSize}
+				numberOfLines={1}
+				style={[defaultStyles.title1]}
+			/>
 			<View style={{ height: 8 }} />
 			<ScrollView
 				refreshControl={
@@ -80,15 +85,16 @@ export default function PollutionScreen() {
 						air
 					/>
 				)}
-				{
-					stationData.stationIndex && (pollutionData.map((element) =>
-						(
+				{stationData.stationIndex &&
+					pollutionData.map((element) => {
+						return (
 							<PollutionCard
 								data={element?.sensorData}
 								name={element?.sensorName}
+								key={element?.sensorName}
 							/>
-						)))
-				}
+						);
+					})}
 			</ScrollView>
 		</Background>
 	);
