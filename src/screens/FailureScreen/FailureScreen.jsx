@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import defaultStyles, { colors, screenWidth } from "../../styles";
 import Background from "../../components/Background/Background";
 import getAddress from "../../getAddress";
+import FailureCard from "../../components/FailureCard/FailureCard";
 
 export default function FailureScreen() {
 	const { t } = useTranslation();
@@ -31,7 +32,6 @@ export default function FailureScreen() {
 	};
 
 	const fetchFailureData = async () => {
-		console.log(userAddress.address);
 		const response = await fetch(
 			`https://mojemiasto-api.azurewebsites.net/api/failure/failureList?city=${userAddress.address.city}&streetName=${userAddress.address.street}&houseNumber=${userAddress.address.houseNumber}`
 		);
@@ -76,10 +76,6 @@ export default function FailureScreen() {
 		}
 	}, [failureTypes, failureCategories, userAddress]);
 
-	useEffect(() => {
-		console.log(failureData);
-	}, [failureData]);
-
 	return (
 		<Background>
 			<SafeAreaView style={defaultStyles.wrapper}>
@@ -107,6 +103,22 @@ export default function FailureScreen() {
 					<Text style={[defaultStyles.title1, { textAlign: "center" }]}>
 						{t("failure:outage_title")}
 					</Text>
+
+					<View style={{ height: 16 }} />
+
+					{failureData.map((element) => {
+						return (
+							<FailureCard
+								key={element.message}
+								isElectricity={element.failureType == 0}
+								startDate={element.startDate}
+								endDate={element.endDate}
+								message={element.message}
+								failureType={failureTypes[element.failureType]}
+								failureCategory={failureCategories[element.failureCategory]}
+							/>
+						);
+					})}
 				</ScrollView>
 			</SafeAreaView>
 		</Background>
