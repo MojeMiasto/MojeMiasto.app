@@ -13,13 +13,13 @@ function pollutionColor(value) {
 		case 1:
 			return { color: "#B0BF51" };
 		case 2:
-			return { color: "#000" };
+			return { color: "#BFA440" };
 		case 3:
-			return { color: "#000" };
+			return { color: "#BF7D40" };
 		case 4:
-			return { color: "#000" };
+			return { color: "#BF4040" };
 		case 5:
-			return { color: "#000" };
+			return { color: "#822A2A" };
 		default:
 			return {};
 	}
@@ -53,7 +53,9 @@ export default function PollutionCard({ data, index = -1, name, air = false }) {
 						backgroundColor={colors.secondaryLight}
 						lineCap="round"
 					>
-						{(fill) => <Text style={style.textHighlight}>{fill}</Text>}
+						{(fill) => (
+							<Text style={style.textHighlight}>{Number(fill).toFixed(1)}</Text>
+						)}
 					</AnimatedCircularProgress>
 				</View>
 				<View style={style.row}>
