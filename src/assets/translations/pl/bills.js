@@ -16,4 +16,8 @@ export default {
 	billAdded: "Rachunek dodany",
 	alertError: "Błąd",
 	billError: "Nie udało się dodać rachunku, spróbuj ponownie później",
+	billWrongDate: "Nieprawidłowa data! Ten dzień już był.",
+	billEmptyFields: "Nazwa i kwota nie mogą być puste.",
+	billAlertInfo: "Informacja",
+	billAlertDelete: "Przestrzały rachunek został usunięty.",
 };
