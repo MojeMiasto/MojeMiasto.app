@@ -7,7 +7,7 @@ export default StyleSheet.create({
 		height: "100%",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "flex-end",
+		justifyContent: "flex-end"
 	},
 	modalContent: {
 		height: 400,
@@ -17,7 +17,7 @@ export default StyleSheet.create({
 		color: colors.text,
 		display: "flex",
 		alignItems: "center",
-		justifyContent: "flex-start",
+		justifyContent: "flex-start"
 	},
 	modalHr: {
 		width: screenWidth / 4,
@@ -25,7 +25,7 @@ export default StyleSheet.create({
 		borderRadius: 2,
 		backgroundColor: colors.text,
 		marginTop: 16,
-		marginBottom: 16,
+		marginBottom: 16
 	},
 	modalWideHr: {
 		width: screenWidth - 64,
@@ -33,24 +33,24 @@ export default StyleSheet.create({
 		borderRadius: 2,
 		backgroundColor: colors.text,
 		marginTop: 8,
-		marginBottom: 8,
+		marginBottom: 8
 	},
 	modalTitle: {
 		fontFamily: "Poppins_400",
 		fontSize: 24,
-		color: colors.text,
+		color: colors.text
 	},
 	modalLabel: {
 		fontFamily: "Poppins_400",
 		fontSize: 18,
-		color: colors.text,
+		color: colors.text
 	},
 	modalFormContainer: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "flex-start",
 		justifyContent: "flex-start",
-		width: screenWidth - 64,
+		width: screenWidth - 64
 	},
 	modalInput: {
 		fontFamily: "Poppins_400",
@@ -62,13 +62,13 @@ export default StyleSheet.create({
 		fontSize: 16,
 		padding: 8,
 		marginTop: 8,
-		marginBottom: 8,
+		marginBottom: 8
 	},
 	modalDateInput: {
 		fontFamily: "Poppins_400",
 		width: 150,
 		height: 40,
-		borderRadius: 8,
+		borderRadius: 8
 	},
 	modalButtonContainer: {
 		display: "flex",
@@ -78,12 +78,12 @@ export default StyleSheet.create({
 		width: screenWidth - 64,
 		height: 40,
 		marginTop: 16,
-		marginBottom: 16,
+		marginBottom: 16
 	},
 	modalButtonText: {
 		fontFamily: "Poppins_400",
 		fontSize: 18,
-		color: colors.text,
+		color: colors.text
 	},
 	modalButtonCancel: {
 		width: 150,
@@ -94,7 +94,7 @@ export default StyleSheet.create({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "center",
+		justifyContent: "center"
 	},
 	modalButtonAdd: {
 		width: 150,
@@ -104,7 +104,7 @@ export default StyleSheet.create({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "center",
+		justifyContent: "center"
 	},
 	headerContainer: {
 		display: "flex",
@@ -112,7 +112,7 @@ export default StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "flex-start",
 		width: screenWidth,
-		height: "100%",
+		height: "100%"
 	},
 	NoBillContainer: {
 		display: "flex",
@@ -125,7 +125,7 @@ export default StyleSheet.create({
 		height: 160,
 		marginTop: "auto",
 		marginBottom: "auto",
-		backgroundColor: colors.secondaryLight,
+		backgroundColor: colors.secondaryLight
 	},
 	BillContainer: {
 		display: "flex",
@@ -135,13 +135,13 @@ export default StyleSheet.create({
 		width: screenWidth,
 		height: 160,
 		marginTop: 10,
-		marginBottom: 20,
+		marginBottom: 20
 	},
 	BillTitle: {
 		fontFamily: "Poppins_400",
 		fontSize: 24,
 		color: colors.text,
-		marginTop: 32,
+		marginTop: 32
 	},
 	BillBox: {
 		display: "flex",
@@ -153,14 +153,14 @@ export default StyleSheet.create({
 		height: 120,
 		borderRadius: defaultBorderRadius,
 		marginBottom: 16,
-		marginTop: 8,
+		marginTop: 8
 	},
 	BillContentContainer: {
 		width: "100%",
 		display: "flex",
 		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "space-evenly",
+		justifyContent: "space-evenly"
 	},
 
 	BillRightSection: {
@@ -169,20 +169,20 @@ export default StyleSheet.create({
 		alignItems: "flex-start",
 		justifyContent: "space-evenly",
 		height: "100%",
-		width: "75%",
+		width: "75%"
 	},
 	BillImage: {
-		width: "25%",
+		width: "25%"
 	},
 	BillContent: {
 		fontFamily: "Poppins_400",
 		fontSize: 22,
-		color: colors.text,
+		color: colors.text
 	},
 	BillDate: {
 		fontFamily: "Poppins_300",
 		fontSize: 16,
-		color: colors.text,
+		color: colors.text
 	},
 	leftSwipe: {
 		display: "flex",
@@ -191,28 +191,28 @@ export default StyleSheet.create({
 		justifyContent: "flex-start",
 		width: "100%",
 		height: "100%",
-		backgroundColor: colors.secondaryLight,
+		backgroundColor: colors.secondaryLight
 	},
 	leftSwipeText: {
 		fontFamily: "Poppins_400",
 		fontSize: 24,
 		color: colors.text,
-		marginLeft: 16,
+		marginLeft: 16
 	},
 	icon: {
 		position: "absolute",
-		right: 16,
+		right: 16
 	},
 	scrollableBillsView: {
-		// height: "100%",
+		height: "100%"
 	},
 	otherBillData: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
-		height: 490,
-	},
+		height: 520
+	}
 	// containerBlur: {
 	// 	// filter: "blur(10px)",
 	// 	width: screenWidth,

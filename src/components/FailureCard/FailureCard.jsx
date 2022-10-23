@@ -51,7 +51,7 @@ export default function FailureCard({
 		<View style={style.container}>
 			<View style={style.row}>
 				<Image source={isElectricity ? lightbulb : tools} />
-				<View>
+				<View style={{ flex: 1 }}>
 					<Text style={style.title}>{failureType?.failureName}</Text>
 					<Text style={style.subtitle}>{failureCategory?.categoryName}</Text>
 					<Text style={style.text}>{date}</Text>
