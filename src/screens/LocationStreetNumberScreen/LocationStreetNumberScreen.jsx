@@ -39,7 +39,7 @@ export default function LocationStreetNumberScreen({ navigation, route }) {
 		try {
 			await AsyncStorage.setItem("userAddress", addressJSON);
 			const token = await AsyncStorage.getItem("notificationToken");
-			registerForNotificatons(token, addressJSON.address.city, addressJSON.address.street, addressJSON.address.houseNumber);
+			registerForNotificatons(token, address[0].address.city, address[0].address.street, address[0].address.houseNumber);
 		} catch (e) {
 			console.error(e);
 		} finally {
