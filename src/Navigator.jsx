@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -6,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 import { colors } from "./styles";
 
-import WasteCard from "./components/WasteCard/WasteCard";
 import WasteScreen from "./screens/WasteScreen/WasteScreen";
 
 import { screenOptions } from "./screenOptions";
@@ -66,11 +66,13 @@ function TabNav() {
 				component={WasteScreen}
 				options={{ tabBarLabel: t("navigation:waste") }}
 			/>
-			<Tab.Screen
-				name="Receipts"
-				component={BillsScreen}
-				options={{ tabBarLabel: t("navigation:bills") }}
-			/>
+			{Platform.OS === "ios" && (
+				<Tab.Screen
+					name="Receipts"
+					component={BillsScreen}
+					options={{ tabBarLabel: t("navigation:bills") }}
+				/>
+			)}
 			<Tab.Screen
 				name="Pollution"
 				component={PollutionScreen}
