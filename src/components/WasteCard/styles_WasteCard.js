@@ -27,7 +27,8 @@ export default StyleSheet.create({
 		fontWeight: "bold",
 		letterSpacing: 1,
 		color: "#D8F3DC",
-		fontFamily: "Poppins_400"
+		fontFamily: "Poppins_400",
+		maxWidth: Dimensions.get("window").width - 180
 	},
 	text: {
 		fontFamily: "Poppins_300",
