@@ -44,9 +44,9 @@ export default function WasteScreen() {
 	const refreshWasteData = async () => {
 		setRefreshing(true);
 		await fetchWasteData();
-		setTimeout(() => {
-			setRefreshing(false);
-		}, 1000);
+		// setTimeout(() => {
+		setRefreshing(false);
+		// }, 1000);
 	};
 
 	const fetchWasteData = async () => {

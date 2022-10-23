@@ -25,9 +25,9 @@ export default function PollutionScreen() {
 	const refreshPollutionData = async () => {
 		setRefreshing(true);
 		await fetchPollutionData();
-		setTimeout(() => {
-			setRefreshing(false);
-		}, 1000);
+		// setTimeout(() => {
+		setRefreshing(false);
+		// }, 1000);
 	};
 
 	const fetchPollutionData = async () => {

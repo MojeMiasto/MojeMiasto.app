@@ -26,9 +26,9 @@ export default function FailureScreen() {
 	const refreshFailureData = async () => {
 		setRefreshing(true);
 		await fetchFailureData();
-		setTimeout(() => {
-			setRefreshing(false);
-		}, 1000);
+		// setTimeout(() => {
+		setRefreshing(false);
+		// }, 1000);
 	};
 
 	const fetchFailureData = async () => {
