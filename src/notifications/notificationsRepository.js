@@ -5,7 +5,6 @@ import { messageModel } from "./wasteNotificationModel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { cancelAllScheduledNotificationsAsync } from "expo-notifications";
 import moment from "moment";
-import {maximumDepthOfJSON} from "react-native/Libraries/Utilities/ReactNativeTestTools";
 
 export async function sendPushNotification(model) {
 	await fetch("https://exp.host/--/api/v2/push/send", {
