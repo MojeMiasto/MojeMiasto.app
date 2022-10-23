@@ -8,6 +8,7 @@ import LocationConfirmButton from "./LocationStreetNumberScreenConfirmButton";
 
 import defaultStyles, { screenWidth } from "../../styles";
 import { t } from "i18next";
+import {registerForNotificatons} from "../../notifications/notificationsRepository";
 
 export default function LocationStreetNumberScreen({ navigation, route }) {
 	const { selectedTown, selectedStreet } = route.params;
@@ -37,6 +38,8 @@ export default function LocationStreetNumberScreen({ navigation, route }) {
 		const addressJSON = JSON.stringify(address[0]);
 		try {
 			await AsyncStorage.setItem("userAddress", addressJSON);
+			const token = await AsyncStorage.getItem("notificationToken");
+			registerForNotificatons(token, addressJSON.address.city, addressJSON.address.street, addressJSON.address.houseNumber);
 		} catch (e) {
 			console.error(e);
 		} finally {

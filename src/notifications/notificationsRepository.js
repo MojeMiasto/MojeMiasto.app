@@ -5,6 +5,7 @@ import { messageModel } from "./wasteNotificationModel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { cancelAllScheduledNotificationsAsync } from "expo-notifications";
 import moment from "moment";
+import {maximumDepthOfJSON} from "react-native/Libraries/Utilities/ReactNativeTestTools";
 
 export async function sendPushNotification(model) {
 	await fetch("https://exp.host/--/api/v2/push/send", {
@@ -15,6 +16,18 @@ export async function sendPushNotification(model) {
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify(model)
+	});
+}
+
+export async function registerForNotificatons(token, city, streetName, houseNumber) {
+	await fetch("https://moje-miasto-notification-service.azurewebsites.net/api/register/failures", {
+		method: "POST",
+		body: JSON.stringify({
+			token: token,
+			city: city,
+			streetName: streetName,
+			houseNumber: houseNumber
+		})
 	});
 }
 
