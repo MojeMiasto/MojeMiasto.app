@@ -15,6 +15,7 @@ export default function WelcomeScreen({ navigation }) {
 	useEffect(() => {
 		const configure = async () => {
 			const token = await registerForPushNotificationsAsync()
+			console.log(token);
 			AsyncStorage.setItem("notificationToken", token);
 		}
 		configure()

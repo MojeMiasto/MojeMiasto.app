@@ -173,7 +173,7 @@ export default function WasteScreen() {
 							windowSize={3}
 							pagingEnabled={true}
 							panGestureHandlerProps={{
-								activeOffsetX: [-40, 40]
+								activeOffsetX: [-20, 20]
 							}}
 							renderItem={({ index }) => {
 								return (
